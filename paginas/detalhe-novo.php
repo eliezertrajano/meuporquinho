@@ -1,4 +1,4 @@
-<?php require_once("inc/init.php"); 
+<?php require_once("inc/init.php");
 $now   = new DateTime();
 ?>
 <style>
@@ -16,18 +16,18 @@ $now   = new DateTime();
 <div class="modal-body">
 	<form id="registro">
 
-		<input type="hidden" class="form-control" name="tabela" value="tarefas">
-		<input type="hidden" class="form-control" name="id" value="<?php echo $now->format( 'dmYHi' ); ?>">
-		<input type="hidden" class="form-control" name="data" value="<?php echo $now->format( 'd/m/Y' ); ?>">
-		<input type="hidden" class="form-control" name="Categoria" value="">
-		<input type="hidden" class="form-control" name="agenciacontacartao" value="">
-		<input type="hidden" class="form-control" name="tiporegistro" value="">
-		<input type="hidden" class="form-control" name="identificacao" value="Inclusao Manual">
-			<input type="hidden" value="usuario" name="usuario" value="<?php echo $_SESSION["id_usuario"]?>">
+		<input type="hidden" class="form-control" name="tabela" value="lancamento">
+		<!--<input type="hidden" class="form-control" name="id" value="<?//php echo $now->format( 'dmYHi' ); ?>">-->
+		<input type="hidden" class="form-control" name="dat_lancamento" value="<?php echo $now->format('d/m/Y');?>">
+		<input type="hidden" class="form-control" name="seq_categoria" value="">
+		<input type="hidden" class="form-control" name="nom_origem" value="">
+		<input type="hidden" class="form-control" name="tip_origem" value="">
+		<input type="hidden" class="form-control" name="cod_identificacao" value="Inclusao Manual">
+		<input type="hidden" class="form-control" name="seq_usuario" value="<?php echo $_SESSION["seq_usuario"]?>">
 
 		<div class="form-group col-xs-12 col-sm-4 col-lg-4">
 			<label for="mes">Mes de Referência:</label>
-			<select class="form-control" name="mes">
+			<select class="form-control" name="mes_lancamento">
       <option value="01">Janeiro</option>
       <option value="02">Fevereiro</option>
       <option value="03">Março</option>
@@ -43,27 +43,24 @@ $now   = new DateTime();
     </select>
 		</div>
 		<div class="form-group col-xs-12 col-sm-2 col-lg-2">
-			<label for="email">ano:</label>
-			<input type="text" class="form-control" name="ano" value="<?php echo $now->format( 'Y' ); ?>">
+			<label for="ano_lancamento">ano:</label>
+			<input type="text" class="form-control" name="ano_lancamento" value="<?php echo $now->format('Y');?>">
 		</div>
 
 		<div class="form-group col-xs-12 col-sm-3 col-lg-3">
-			<label for="email">valor:</label>
-			<input type="text" class="form-control" name="valor" value="">
+			<label for="val_lancamento">valor:</label>
+			<input type="text" class="form-control" name="val_lancamento" value="">
 		</div>
 
-
 		<div class="form-group col-xs-12 col-sm-3 col-lg-3">
-			<label for="email">tipo:</label>
-			<select class="form-control" name="tipo"></select>
+			<label for="seq_categoria">categoria:</label>
+			<select class="form-control" name="seq_categoria"></select>
 		</div>
 
 		<div class="form-group col-xs-8 col-sm-12 col-lg-12">
-			<label for="email">Descricao:</label>
-			<input type="text" class="form-control" name="Item" id="Item">
+			<label for="txt_lancamento">Descricao:</label>
+			<input type="text" class="form-control" name="txt_lancamento" id="txt_lancamento">
 		</div>
-
-
 	</form>
 </div>
 <div class="modal-footer">

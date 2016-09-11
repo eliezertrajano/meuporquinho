@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION)) {
-  session_start();
+    session_start();
 }
 ?>
 
@@ -13,13 +13,37 @@ if (!isset($_SESSION)) {
 		</h1>
 
 <form id="categoria">
-	<input type="hidden" value="tipo" name="tabela">
-	<input type="hidden"  name="usuario" value="<?php echo $_SESSION["id_usuario"]?>">
+	<input type="hidden" value="categoria" name="tabela">
+	<input type="hidden"  name="usuario" value="<?php echo $_SESSION["seq_usuario"]?>">
 <table class="col-sm-12">
 	<tr>
-		<td class="col-sm-6"><input type="text" class="form-control" name="descricao" placeholder="categoria"></td>
-		<td class="col-sm-5"><select class="form-control" name="tipo"><option value="0">Saídas</option><option value="1">Entradas</option></select></td>
-		<td class="col-sm-1"><input type="button" class="form-control btn-success" value="Incluir" onclick="salvar('categoria',iniciar)" ></td>
+		<td class="col-sm-6">
+		  <input type="text" class="form-control" name="nom_categoria" placeholder="categoria">
+		</td>
+		<td class="col-sm-5">
+		  <select class="form-control" name="ind_categoria">
+		    <option value="D">Despesa</option>
+		    <option value="R">Receita</option>
+		    <option value="I">Investimento</option>
+		  </select>
+		</td>
+		<td class="col-sm-5">
+		  <select class="form-control" name="tip_categoria">
+		    <option value="MIG">Migração</option> 
+            <option value="FIX">Gastos fixos</option>
+            <option value="HAB">Habitação</option>
+            <option value="SAU">Saúde</option>
+            <option value="AUT">Automóvel</option>
+            <option value="PES">Pessoal</option>
+            <option value="LAZ">Lazer</option>
+            <option value="DEP">Dependentes</option>
+            <option value="INV">Investimento</option>
+            <option value="TAX">Impostos e taxas</option>
+		  </select>
+		</td>
+		<td class="col-sm-1">
+		  <input type="button" class="form-control btn-success" value="Incluir" onclick="salvar('categoria',iniciar)" >
+		</td>
 	</tr>
 </table>
 	
@@ -31,13 +55,9 @@ if (!isset($_SESSION)) {
 	
 </div>
 <script type="text/javascript">
-
-
-
   $.getScript( "/meuporquinho/assets/js/geral.js", function( ) {
 		iniciar()
 	});
-
 
 	function iniciar() {
 		carregarValores({
@@ -54,5 +74,4 @@ if (!isset($_SESSION)) {
 			remover($(this).attr("item"), 'tipo',iniciar);
 		});
 	}
- 
 </script>

@@ -1,5 +1,3 @@
-
-
 <h1 class="page-title txt-color-blueDark">
 			
 			<!-- PAGE HEADER -->
@@ -15,24 +13,21 @@ Sugestão de Alteração:
 
 <form id="registro">
 
-<input type="hidden" name="tabela" value="tarefas">
-<input type="hidden" name="id" value ="<?php echo $_GET["id"] ?>">
-<input type="hidden" name="data" value="">
-<input type="hidden" name="mes" value="">
-<input type="hidden" name="ano" value=""> 
-<input type="hidden" name="valor" value=""> 	
-<input type="hidden" name="Categoria" value=""> 
-<input type="hidden" name="agenciacontacartao" value=""> 	
-<input type="hidden" name="tiporegistro" value=""> 	
-<input type="hidden" name="identificacao" value=""> 	
-<input type="hidden"  name="usuario" value="<?php echo $_SESSION["id_usuario"]?>">
-	
-	
-	
+<input type="hidden" name="tabela" value="lancamento">
+<input type="hidden" name="seq_lancamento" value ="<?php echo $_GET["seq_lancamento"] ?>">
+<input type="hidden" name="dat_lancamento" value="">
+<input type="hidden" name="mes_lancamento" value="">
+<input type="hidden" name="ano_lancamento" value=""> 
+<input type="hidden" name="val_lancamento" value=""> 	
+<input type="hidden" name="seq_categoria" value=""> 
+<input type="hidden" name="nom_origem" value=""> 	
+<input type="hidden" name="tip_origem" value=""> 	
+<input type="hidden" name="cod_identificacao" value=""> 	
+<input type="hidden"  name="seq_usuario" value="<?php echo $_SESSION["seq_usuario"]?>">
 	
   <div class="form-group col-xs-12 col-sm-4 col-lg-4">
-    <label for="email">Categoria:</label>
-    <select class="form-control" name="tipo"></select>
+    <label for="seq_categoria">Categoria:</label>
+    <select class="form-control" name="seq_categoria"></select>
   </div>
 
   <div class="form-group col-xs-12 col-sm-4 col-lg-4">
@@ -43,7 +38,7 @@ Sugestão de Alteração:
 
   <div class="form-group col-xs-12 col-sm-3 col-lg-4">
     <label for="mes">Mes de Referência:</label>
-    <select class="form-control" name="mes">
+    <select class="form-control" name="mes_lancamento">
       <option value="01">Janeiro</option>
       <option value="02">Fevereiro</option>
       <option value="03">Março</option>
@@ -58,10 +53,6 @@ Sugestão de Alteração:
       <option value="12">Dezembro</option>
     </select>
   </div>
-
-
-
-
 
 </form>
   <button class="btn  col-sm-1 col-lg-1 btn-default" onclick="salvarExclusivo()">Salvar</button>
