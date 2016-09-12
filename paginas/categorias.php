@@ -17,17 +17,17 @@ if (!isset($_SESSION)) {
 	<input type="hidden"  name="usuario" value="<?php echo $_SESSION["seq_usuario"]?>">
 <table class="col-sm-12">
 	<tr>
-		<td class="col-sm-6">
+		<td class="col-sm-4">
 		  <input type="text" class="form-control" name="nom_categoria" placeholder="categoria">
 		</td>
-		<td class="col-sm-5">
+		<td class="col-sm-4">
 		  <select class="form-control" name="ind_categoria">
 		    <option value="D">Despesa</option>
 		    <option value="R">Receita</option>
 		    <option value="I">Investimento</option>
 		  </select>
 		</td>
-		<td class="col-sm-5">
+		<td class="col-sm-3">
 		  <select class="form-control" name="tip_categoria">
 		    <option value="MIG">Migração</option> 
             <option value="FIX">Gastos fixos</option>
