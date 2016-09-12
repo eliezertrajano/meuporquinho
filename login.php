@@ -45,7 +45,7 @@
                     <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal m-t-10" action="process/validauser.php">
+                    <form class="form-horizontal m-t-10" action="process/utils/validauser.php">
 
                       <div class="form-group ">
                         <div class="col-xs-12">

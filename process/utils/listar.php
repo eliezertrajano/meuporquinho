@@ -1,9 +1,9 @@
 <?php
 //error_reporting(0);
 
-require_once $_SERVER[DOCUMENT_ROOT].'meuporquinho/config.php';
-require_once $_SERVER[DOCUMENT_ROOT].'meuporquinho/process/data/mysql.php';
-require_once $_SERVER[DOCUMENT_ROOT].'meuporquinho/process/data/geral.php';
+require_once $_SERVER[DOCUMENT_ROOT].'config.php';
+require_once $_SERVER[DOCUMENT_ROOT].'process/data/mysql.php';
+require_once $_SERVER[DOCUMENT_ROOT].'process/data/geral.php';
 
  
 

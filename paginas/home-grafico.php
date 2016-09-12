@@ -54,7 +54,7 @@
 
 <script type="text/javascript">
 	$(function() {
-		$.getScript( "/meuporquinho/assets/js/geral.js", function( ) {
+		$.getScript( "/assets/js/geral.js", function( ) {
 			carregarSelect_custom('ano', 'LISTAR_ANOS_DISPONIVEIS');
 			iniciar();
 		});

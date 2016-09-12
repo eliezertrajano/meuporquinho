@@ -104,9 +104,9 @@
 				<script>
 
 					$(function() {
-						$.getScript( "/meuporquinho/assets/plugins/highcharts/highcharts.js", function( ) {
-							$.getScript( "/meuporquinho/assets/js/geral.js", function( ) {
-								$.getScript( "/meuporquinho/assets/js/graficos.js", function( ) {
+						$.getScript( "/assets/plugins/highcharts/highcharts.js", function( ) {
+							$.getScript( "/assets/js/geral.js", function( ) {
+								$.getScript( "/assets/js/graficos.js", function( ) {
 									carregarSelect_custom('ano', 'LISTAR_ANOS_DISPONIVEIS');
 									iniciar();
 								});

@@ -28,7 +28,7 @@ if (!isset($_SESSION)) {
 </div>
 
 <script type="text/javascript">
-	$.getScript( "/meuporquinho/assets/js/geral.js", function( ) {
+	$.getScript( "/assets/js/geral.js", function( ) {
 		iniciar();
 		carregarSelect('tipo', 'tipo');
 	});

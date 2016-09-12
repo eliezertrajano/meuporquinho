@@ -1,5 +1,5 @@
-<?php require_once $_SERVER[DOCUMENT_ROOT].'meuporquinho/header.php'; ?>
-<?php require_once $_SERVER[DOCUMENT_ROOT].'meuporquinho/menu.php'; ?>
+<?php require_once $_SERVER[DOCUMENT_ROOT].'/header.php'; ?>
+<?php require_once $_SERVER[DOCUMENT_ROOT].'/menu.php'; ?>
 
 	<div class="content-page">
 		<div class="content">
@@ -10,11 +10,11 @@
 					}else{
 						$pagina='home';						
 					}
-			   	require_once $_SERVER[DOCUMENT_ROOT].'meuporquinho/paginas/'.$pagina.'.php'; 
+			   	require_once $_SERVER[DOCUMENT_ROOT].'/paginas/'.$pagina.'.php'; 
 				
 			?>
 			</div>
 		</div>
 	</div>
 
-<?php require_once $_SERVER[DOCUMENT_ROOT].'meuporquinho/footer.php'; ?>
+<?php require_once $_SERVER[DOCUMENT_ROOT].'/footer.php'; ?>
