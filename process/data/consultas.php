@@ -85,7 +85,7 @@ select c.seq_categoria as id, c.nom_categoria as descricao,
        case when c.ind_categoria = 'R' then 'Receita' 
         when c.ind_categoria = 'I' then 'Investimento' 
         when c.ind_categoria = 'D' then 'Despesa' end as tipo,
-        g.tip_grupo, g.nom_grupo
+        g.nom_grupo
 FROM categoria c 
   inner join categoria_grupo g
     on c.tip_grupo = g.tip_grupo

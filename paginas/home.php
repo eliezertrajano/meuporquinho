@@ -71,7 +71,7 @@
 							<div class="col-sm-12">
 								<div class="well well-sm well-light">
 									<h4>
-										<b> Seus maiores gastos </b>
+										<b> Em que vc mais gasta </b>
 									</h4>
 									<br>
 									<div id="valores">
@@ -85,7 +85,7 @@
 							<div class="col-sm-12">
 								<div class="well well-sm well-light">
 									<h4>
-										<b> Em que vc mais gasta </b>							    	
+										<b> Seus maiores gastos </b>							    	
 
 									</h4>
 									<br>
