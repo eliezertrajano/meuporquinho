@@ -1,20 +1,22 @@
 <?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+ini_set('default_charset','utf-8');
+header('Content-type: text/html; charset=utf-8');
 
 require_once $_SERVER[DOCUMENT_ROOT].'config.php';
 require_once $_SERVER[DOCUMENT_ROOT].'process/data/mysql.php';
 require_once $_SERVER[DOCUMENT_ROOT].'process/data/geral.php';
 
-if (!isset($_SESSION)) {
-  session_start();
-}
 
-$path = $_SERVER['DOCUMENT_ROOT'] . 'money/arquivos/';
+$path = $_SERVER['DOCUMENT_ROOT'] . 'arquivos/';
 $diretorio = dir($path);
   while($arquivo = $diretorio -> read()){
 	   if(($arquivo<>"undefined")&&($arquivo<>"..")&&($arquivo<>".")){
 					echo "processando arquivo ".$arquivo." ...<br>";	
 					$item = explode("_",$arquivo);
-					if ($item[0]==$_SESSION["id_usuario"]){
+					if ($item[0]== $_SESSION["seq_usuario"]){
 						processarArquivo($path."/".$arquivo);
 						unlink($path."/".$arquivo);
 					}	 			
@@ -25,16 +27,20 @@ $diretorio = dir($path);
    
    } 
    
-function removerAcentos ($texto){
-    $array1 = array( "á", "à", "â", "ã", "ä", "é", "è", "ê", "ë", "í", "ì", "î", "ï", "ó", "ò", "ô", "õ", "ö", "ú", "ù", "û", "ü", "ç"
-    , "Á", "À", "Â", "Ã", "Ä", "É", "È", "Ê", "Ë", "Í", "Ì", "Î", "Ï", "Ó", "Ò", "Ô", "Õ", "Ö", "Ú", "Ù", "Û", "Ü", "Ç" );
-    $array2 = array( "a", "a", "a", "a", "a", "e", "e", "e", "e", "i", "i", "i", "i", "o", "o", "o", "o", "o", "u", "u", "u", "u", "c"
-    , "A", "A", "A", "A", "A", "E", "E", "E", "E", "I", "I", "I", "I", "O", "O", "O", "O", "O", "U", "U", "U", "U", "C" );
+function removerAcentos($texto){
+    $array1 = array( "á", "à", "â", "ã", "ä", "é", "è", "ê", "ë", "í", "ì", "î", "ï", "ó", "ò", "ô", "õ", "ö", "ú", "ù", "û", "ü", "ç", "Á", "À", "Â", "Ã", "Ä", "É", "È", "Ê", "Ë", "Í", "Ì", "Î", "Ï", "Ó", "Ò", "Ô", "Õ", "Ö", "Ú", "Ù", "Û", "Ü", "Ç" );
+    $array2 = array( "a", "a", "a", "a", "a", "e", "e", "e", "e", "i", "i", "i", "i", "o", "o", "o", "o", "o", "u", "u", "u", "u", "c", "A", "A", "A", "A", "A", "E", "E", "E", "E", "I", "I", "I", "I", "O", "O", "O", "O", "O", "U", "U", "U", "U", "C" );
     return str_replace( $array1, $array2, $texto); 
+	  //return $texto;
 }
-   
+function file_get_contents_utf8($fn) {
+     $content = file_get_contents($fn);
+      return mb_convert_encoding($content, 'UTF-8',
+          mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
+}
+
 function processarArquivo($arquivo) {  
-	$data = file_get_contents($arquivo);
+	$data = file_get_contents_utf8($arquivo);
 	
 	$generico = new Geral();
 	
@@ -42,39 +48,35 @@ function processarArquivo($arquivo) {
 	try{
 
 		$item = array (
-				"item" => getDescricao($value),
-				"data" => getData($value),
-				"mes" =>  getMes($value),
-				"ano" =>  getAno($value),
-				"valor"=> getValor($value),
+				"txt_lancamento" => getDescricao($value),
+				"dat_lancamento" => getData($value),
+				"mes_lancamento" =>  getMes($value),
+				"ano_lancamento" =>  getAno($value),
+				"val_lancamento"=> getValor($value),
 				"id"=>  md5(getValor($value).getData($value)."-".getId($value).getBanco($value)),
-			  "banco"=> getBanco($data),
-			  "agenciacontacartao"=>getAgenciaContaCartao($data),
-			  "tiporegistro"=>getCartao($data),
-			  "identificacao"=>getId($value),
-			  "usuario"=>$_SESSION["id_usuario"],
+			  "nom_origem"=> getBanco($data),
+			  "txt_origem"=>getAgenciaContaCartao($data),
+			  "tip_origem"=>getCartao($data),
+			  "cod_identificacao"=>getId($value),
+			  "seq_usuario"=> $_SESSION["seq_usuario"],
+			  "seq_categoria"=>'0'
 			
 		);
                // echo 'id--->';
                // echo getId($value);
 		
-	        echo $generico->conexao->insert("tarefas",$item);
-		
+	        echo $generico->conexao->insert("lancamento",$item);
 
-
-
-
-		
 	}catch (Exception $e) {}
 	}
 }
 
 function getCartao($value){
 	if(strchr($value,"CREDITCARDMSGSRSV1")){
-		return "Cartão de Crédito"; // cartão de credito
+		return "CRED"; // cartão de credito
 	}
 	else{
-		return "Débito em Conta"; // cartão de debito
+		return "DEB"; // cartão de debito
 	}
 }
 
@@ -129,7 +131,7 @@ function getContaCartao($value){
 
 function getMes($value){
 	
-	if(getCartao($value)=="Cartão de Crédito"){
+	if(getCartao($value)=="CRE"){
 			$a = remover($value);
 			$a = split("<DTASOF>",$a);
 			$a =$a[1];
@@ -181,7 +183,8 @@ function getData($value){
 		$a=split("<TRNAMT>",$a);
 		$a=$a[0];
 		$data = trim($a);
-	 return substr($data,6,2)."/".substr($data,4,2)."/".substr($data,0,4);
+	  echo $data;
+	 return substr($data,0,4)."-".substr($data,4,2)."-".substr($data,6,2);
 }
 function getId($value){
 		$a = split("<FITID>",$value);

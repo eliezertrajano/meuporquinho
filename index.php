@@ -8,7 +8,7 @@
 				  if(isset($_REQUEST['q'])){
 						$pagina=$_REQUEST['q'];
 					}else{
-						$pagina='home';						
+						$pagina='home-grafico';						
 					}
 			   	require_once $_SERVER[DOCUMENT_ROOT].'/paginas/'.$pagina.'.php'; 
 				

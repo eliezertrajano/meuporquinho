@@ -1,6 +1,7 @@
 @import "variables.less";
 @import "elements.less";
 
+
 /*
 Template Name: Flacto Dashboard
 Author: CoderThemes
@@ -754,7 +755,6 @@ File: Components
 
 
 
-
 /* =============
    Panels
 ============= */
@@ -763,7 +763,7 @@ File: Components
   border: 1px solid darken(@lightdark,10%);
   margin-bottom: 20px;
   box-shadow: none;
-  background-color: @white;
+  background-color: transparent;
 
   .panel-body {
     padding: 20px;
@@ -787,9 +787,9 @@ File: Components
 }
 
 .panel-title {
+  font-weight: 500;
   margin-bottom: 0;
   margin-top: 0;
-  font-family: @font-secondary;
 }
 
 .panel-footer {
@@ -992,16 +992,15 @@ File: Components
     li {
       a{
         background-color: transparent !important;
-        font-weight: 700;
+        font-weight: 500;
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
         color: @white !important;
-        line-height: 40px;
       }
     }
     li.active {
       a {
-        background-color: @white !important;
+        background-color: @lightdark !important;
         color: @dark !important;
       }
     }
@@ -1020,9 +1019,8 @@ File: Components
         padding: 8px 14px;
         font-size: 13px;
         background-color: transparent !important;
-        font-weight: 700;
+        font-weight: 500;
         color: @dark !important;
-        line-height: 18px;
       }
     }
     li.active {
@@ -1045,7 +1043,6 @@ File: Components
 .portlet {
   border: 1px solid darken(@lightdark,10%);
   .border-radius(5px);
-  background-color: @white;
   -webkit-transition: opacity 3s ease-in-out;
   -moz-transition: opacity 3s ease-in-out;
   -ms-transition: opacity 3s ease-in-out;
@@ -1276,13 +1273,13 @@ File: Components
 .table > thead > tr > th.active, .table > tbody > tr > th.active, .table > tfoot > tr > th.active,
 .table > thead > tr.active > td, .table > tbody > tr.active > td, .table > tfoot > tr.active > td,
 .table > thead > tr.active > th, .table > tbody > tr.active > th, .table > tfoot > tr.active > th {
-    background-color: @light9 !important;
+    background-color: darken(@lightdark,3%) !important;
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th,
 .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td ,
 .table > thead > tr > th, .table-bordered{
-    border-top: 1px solid darken(@light9,10%);
+    border-top: 1px solid darken(@lightdark,10%);
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
@@ -1290,11 +1287,11 @@ File: Components
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid darken(@light9,10%);
+  border: 1px solid darken(@lightdark,10%);
 }
 .table > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid darken(@light9,10%);
+    border-bottom: 2px solid darken(@lightdark,10%);
 }
 
 tbody {

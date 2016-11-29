@@ -14,7 +14,7 @@ if (!isset($_SESSION)) {
 
 <form id="categoria">
 	<input type="hidden" value="categoria" name="tabela">
-	<input type="hidden"  name="usuario" value="<?php echo $_SESSION["seq_usuario"]?>">
+	<input type="hidden"  name="seq_usuario" value="<?php echo $_SESSION["seq_usuario"]?>">
 <table class="col-sm-12">
 	<tr>
 		<td class="col-sm-4">
@@ -28,50 +28,72 @@ if (!isset($_SESSION)) {
 		  </select>
 		</td>
 		<td class="col-sm-3">
-		  <select class="form-control" name="tip_categoria">
-		    <option value="MIG">Migração</option> 
-            <option value="FIX">Gastos fixos</option>
-            <option value="HAB">Habitação</option>
-            <option value="SAU">Saúde</option>
-            <option value="AUT">Automóvel</option>
-            <option value="PES">Pessoal</option>
-            <option value="LAZ">Lazer</option>
-            <option value="DEP">Dependentes</option>
-            <option value="INV">Investimento</option>
-            <option value="TAX">Impostos e taxas</option>
+		  <select class="form-control" name="tip_grupo">
+
 		  </select>
 		</td>
 		<td class="col-sm-1">
 		  <input type="button" class="form-control btn-success" value="Incluir" onclick="salvar('categoria',iniciar)" >
 		</td>
 	</tr>
+	
 </table>
 	
 </form>
 
 <br>
 <hr>
-<div id="detalhes">
-	
-</div>
+	<table class="table">
+			<thead>
+			<tr>
+			
+					<th>Descricao</th>
+					<th>Categoria</th>
+					<th>Tipo</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody  id="detalhes">
+
+
+
+			</tbody>
+	</table>
 <script type="text/javascript">
   $.getScript( "/assets/js/geral.js", function( ) {
 		iniciar()
 	});
 
 	function iniciar() {
+		$("#label_status").html("<img src='/assets/images/default.svg' width='20px'> Carregando Valores...");
+		$("#categoria").trigger("reset");
 		carregarValores({
 			consulta: "LISTAR_CATEGORIAS_DETALHES"
 		}, function(obj) {
 			criarTabela(obj, '#detalhes', '', 'x', deletar);
 		});
+		
+	carregarValores({
+			ent: "categoria_grupo",
+		
+		}, function(obj) {
+			var options="";
+			for (var j in obj ) {
+				options = options + "<option value="+obj[j]["categoria_grupo"]["tip_grupo"]+">"+obj[j]["categoria_grupo"]["nom_grupo"]+"</option>";
+			}
+			
+			$("[name=tip_grupo]").html(options);
+			
+		},false,true);
+		
 	}
 
 	function deletar() {
+		$("#label_status").html("Atualizados");
 		$('.x').unbind();
 		$('.x').click(function() {
 			id = $(this).attr("item");
-			remover($(this).attr("item"), 'tipo',iniciar);
+			remover($(this).attr("item"), 'categoria',iniciar);
 		});
 	}
 </script>

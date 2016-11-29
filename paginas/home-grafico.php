@@ -31,26 +31,35 @@
 	the <section></section> and you can use wells or panels instead 
 -->
 
-<div class="row" style="min-width: 900px !important;">
-	<div class="col-sm-12" style="min-width: 900px !important;">
-		<div class="col-sm-2" style="background: #666; color:white"> Itens</div>
-		<div class="col-sm-10 itens" style="background: #666; color:white;">
-			<div class="col-sm-1" style="color: white;"> JAN</div>
-			<div class="col-sm-1" style="color: white;"> FEV</div>
-			<div class="col-sm-1" style="color: white;"> MAR</div>
-			<div class="col-sm-1" style="color: white;"> ABR</div>
-			<div class="col-sm-1" style="color: white;"> MAIO</div>
-			<div class="col-sm-1" style="color: white;"> JUN</div>
-			<div class="col-sm-1" style="color: white;"> JUL</div>
-			<div class="col-sm-1" style="color: white;"> AGO</div>
-			<div class="col-sm-1" style="color: white;"> SET</div>
-			<div class="col-sm-1" style="color: white;"> OUT</div>
-			<div class="col-sm-1" style="color: white;"> NOV</div>
-			<div class="col-sm-1" style="color: white;"> DEZ</div>
-		</div>
-	</div>
-	<div class="col-sm-12 meses"></div>
-</div>
+
+
+<div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Categoria</th>
+                                        <th>JAN</th>
+                                        <th>FEV</th>
+                                        <th>MAR</th>
+                                        <th>ABR</th>
+                                        <th>MAI</th>
+																			<th>JUN</th>
+																			<th>JUL</th>
+																			<th>AGO</th>
+																			<th>SET</th>
+																			<th>OUT</th>
+																			<th>NOV</th>
+																			<th>DEZ</th>
+																			
+                                    </tr>
+                                    </thead>
+                                    <tbody class="meses">
+                              
+                    
+
+                                    </tbody>
+                                </table>
+                            </div>
 
 <script type="text/javascript">
 	$(function() {
@@ -61,34 +70,57 @@
 	});
 
 	function iniciar() {
-		$("#label_status").html("<img src='/money/img/popup.gif' width='20px'>Aguarde... Atualizando registros!!");
-		carregarValores({
-			consulta: "LISTAR_VALORES_ANO_DETALHES",
-			parametro: $('#ano').val() 
+		$("#label_status").html("<img src='/assets/images/default.svg' width='20px'>Aguarde... Atualizando registros!!");
+	
+
+	  carregarValores({
+			consulta: "EXIBIR_GURPOSCATEGORIA"
 		}, function(obj) {
 			$('.meses').html("");
 			$.each(obj, function(index, value) {
+	        if(value.tip_grupo==0){
+						value.nom_grupo="Sem Categorizacao"
+					}
+					carregarValores({
+						consulta: "LISTAR_VALORES_ANO_DETALHES",
+						parametro: $('#ano').val()+","+value.tip_grupo
+					}, function(obj) {
+						$('.meses').append("<tr><th colspan='13' style=' background-color: rgba(70, 103, 204, 0.15);    padding: 1px;    padding-left: 11px;'>"+value.nom_grupo+"</th></tr>");
+						 mostrarValores(obj);
+					});
+				
+				
+			});
+		});
+		
+		
+	
+		
+
+	}
+	
+	function mostrarValores(obj){
+					$.each(obj, function(index, value) {
 				if (value.tipo == "1") {
 					color = "#B0C4DE";
 				} else {
 					color = 'white';
 				}
 				var item = '';
-				item = item + '<div class="col-xs-2 col-md-2 col-sm-2" style="border: 1px #ccc solid; color: #800000;background: ' + color + ';height: 22px; text-overflow: ellipsis;  text-align:left"><span> <a href="#" data-toggle="tooltip" data-placement="top" title="0" id="media_' + value.id + '">' + value.descricao + '</a></span></div>';
-				item = item + '<div class="col-xs-10 col-md-10 col-sm-10 itens" style="border: 1px #ccc solid;background: ' + color + ';height: 22px; text-overflow: ellipsis;">';
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes1"><a href="?q=detalhes&mes=01&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["1"])+'</a></div>';	
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes2" ><a href="?q=detalhes&mes=02&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["2"])+'</a></div>';
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes3"><a href="?q=detalhes&mes=03&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["3"])+'</a></div>';	
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes4"><a href="?q=detalhes&mes=04&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["4"])+'</a></div>';
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes5"><a href="?q=detalhes&mes=05&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["5"])+'</a></div>';	
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes6"><a href="?q=detalhes&mes=06&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["6"])+'</a></div>';
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes7"><a href="?q=detalhes&mes=07&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["7"])+'</a></div>';	
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes8"><a href="?q=detalhes&mes=08&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["8"])+'</a></div>';
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes9"><a href="?q=detalhes&mes=09&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["9"])+'</a></div>';  	
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes10"><a href="?q=detalhes&mes=10&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["10"])+'</a></div>';
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes11"><a href="?q=detalhes&mes=11&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["11"])+'</a></div>';	
-				item = item + '<div class="col-xs-1 col-md-1 col-sm-1 valor mes12" ><a href="?q=detalhes&mes=12&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["12"])+'</a></div>';
-				item = item + '</div>';
+				item = item + '<tr><td><span> <a href="#" data-toggle="tooltip" data-placement="top" title="0" id="media_' + value.id + '">' + value.nom_categoria + '</a></span></td>';
+				item = item + '<td class=" valor mes1"><a href="?q=detalhes&mes=01&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["1"])+'</a></td>';	
+				item = item + '<td class=" valor mes2" ><a href="?q=detalhes&mes=02&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["2"])+'</a></td>';
+				item = item + '<td class=" valor mes3"><a href="?q=detalhes&mes=03&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["3"])+'</a></td>';	
+				item = item + '<td class="valor mes4"><a href="?q=detalhes&mes=04&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["4"])+'</a></td>';
+				item = item + '<td class=" valor mes5"><a href="?q=detalhes&mes=05&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["5"])+'</a></td>';	
+				item = item + '<td class=" valor mes6"><a href="?q=detalhes&mes=06&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["6"])+'</a></td>';
+				item = item + '<td class="valor mes7"><a href="?q=detalhes&mes=07&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["7"])+'</a></td>';	
+				item = item + '<td class="valor mes8"><a href="?q=detalhes&mes=08&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["8"])+'</a></td>';
+				item = item + '<td class="valor mes9"><a href="?q=detalhes&mes=09&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["9"])+'</a></td>';  	
+				item = item + '<td class=" valor mes10"><a href="?q=detalhes&mes=10&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["10"])+'</a></td>';
+				item = item + '<td class="valor mes11"><a href="?q=detalhes&mes=11&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["11"])+'</a></td>';	
+				item = item + '<td class= valor mes12" ><a href="?q=detalhes&mes=12&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["12"])+'</a></td>';
+				item = item + '</tr>';
 				$('.meses').append(item);
 
 			});
@@ -96,10 +128,6 @@
 
 			$("#label_status").html("Registros Atualizados!");
 			colorir();
-		});
-		
-		
-		$("#label_status").html("<img src='/money/img/popup.gif' width='20px'>Aguarde... Atualizando registros!!");
 	}
 
 	function colorir(){

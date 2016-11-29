@@ -17,23 +17,30 @@ if (!isset($parametro)) {
 
 // FINANCEIRO ///////////////
 
-define("LISTAR_VALORES_ANO_DETALHES", "select seq_categoria,nom_categoria,ind_categoria,tip_grupo,
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='01' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '1',
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='02' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'   ) as '2',
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='03' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '3',
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='04' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '4', 
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='05' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '5',
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='06' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '6',
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='07' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '7',
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='08' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '8',
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='09' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '9' ,
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='10' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '10',
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='11' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '11',
- (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='12' and seq_categoria = c.seq_categoria and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '12'
+define("LISTAR_VALORES_ANO_DETALHES", "select id,nom_categoria,ind_categoria,tip_grupo,
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='01' and seq_categoria = c.id and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '1',
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='02' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'   ) as '2',
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='03' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '3',
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='04' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '4', 
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='05' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '5',
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='06' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '6',
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='07' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '7',
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='08' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '8',
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='09' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '9' ,
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='10' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '10',
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='11' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '11',
+ (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where mes_lancamento ='12' and seq_categoria = c.id  and  ind_acompanhamento = 0 and ano_lancamento = '".$parametro[0]."' and l.seq_usuario = '".$_SESSION["seq_usuario"]."'  ) as '12'
  from categoria as c
  where  c.seq_usuario = '".$_SESSION["seq_usuario"]."' 
- group by c.seq_categoria
+ and tip_grupo = '".$parametro[1]."'
+ group by c.id
  order by c.ind_categoria desc");
+
+define("EXIBIR_GURPOSCATEGORIA","select c.tip_grupo, ca.nom_grupo from categoria c
+left join categoria_grupo ca on ca.tip_grupo = c.tip_grupo
+where c.seq_usuario ='".$_SESSION["seq_usuario"]."'
+GROUP by c.tip_grupo order by ca.ind_ordem asc");
+
 
 define("MAIOR_QTD_GASTO_CATEGORIA", "
 select l.ano_lancamento as ano, l.mes_lancamento as mes, c.seq_categoria as codigo,
@@ -44,6 +51,7 @@ select l.ano_lancamento as ano, l.mes_lancamento as mes, c.seq_categoria as codi
   where l.ano_lancamento ='".$parametro[0]."'
     and l.mes_lancamento ='".$parametro[1]."'
     and l.seq_usuario ='".$_SESSION["seq_usuario"]."' 
+     and  l.ind_acompanhamento = 0 
   group by l.ano_lancamento,l.mes_lancamento,c.seq_categoria
     order by count(1) desc");
 
@@ -56,32 +64,34 @@ select l.ano_lancamento as ano, l.mes_lancamento as mes, c.seq_categoria as codi
   where l.ano_lancamento ='".$parametro[0]."'
     and l.mes_lancamento ='".$parametro[1]."'
     and l.seq_usuario = '".$_SESSION["seq_usuario"]."' 
+     and  l.ind_acompanhamento = 0 
   group by l.ano_lancamento,l.mes_lancamento,c.seq_categoria
     order by sum(val_lancamento) asc");
 
 define("LISTAR_VALORES_DETALHES", "
-select l.seq_lancamento, l.dat_lancamento, l.txt_lancamento, l.tip_origem ,l.val_lancamento
+select l.id, l.txt_lancamento, l.dat_lancamento, l.txt_lancamento, l.tip_origem ,l.val_lancamento
   from lancamento l
-    where l.ano_lancamento = trim('".$parametro[0]."')
+    where   
+    l.ano_lancamento = trim('".$parametro[0]."')
       and l.mes_lancamento = trim('".$parametro[1] ."')
       and l.seq_categoria =trim('".$parametro[2] ."')  ");
 
 define("LISTAR_REGRAS", "
-select r.seq_regra,r.des_regra as regra, c.nom_categoria as categoria, 
+select r.id,r.des_regra as regra, c.nom_categoria as categoria, 
        case when c.ind_categoria = 'R' then 'Receita' 
         when c.ind_categoria = 'I' then 'Investimento' 
         when c.ind_categoria = 'D' then 'Despesa' end as tipo,
         g.nom_grupo as grupo
 from regra r 
   inner join categoria c 
-    on r.seq_categoria = c.seq_categoria
+    on r.seq_categoria = c.id
   inner join categoria_grupo g
     on c.tip_grupo = g.tip_grupo
 where r.seq_usuario = '".$_SESSION["seq_usuario"]."' 
 order by c.nom_categoria, r.des_regra");
 
 define("LISTAR_CATEGORIAS_DETALHES", "
-select c.seq_categoria as id, c.nom_categoria as descricao,
+select c.id, c.nom_categoria as descricao,
        case when c.ind_categoria = 'R' then 'Receita' 
         when c.ind_categoria = 'I' then 'Investimento' 
         when c.ind_categoria = 'D' then 'Despesa' end as tipo,

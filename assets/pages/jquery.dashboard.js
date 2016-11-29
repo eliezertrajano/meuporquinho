@@ -55,7 +55,7 @@
             data: data,
             resize: true, //defaulted to true
             colors: colors,
-            backgroundColor: '#fff'
+            backgroundColor: '#f5f5f5'
         });
     },
     
@@ -72,7 +72,7 @@
             { y: '2015', a: 93 },
             { y: '2016', a: 50 }
         ];
-        this.createBarChart('morris-bar-example', $barData, 'y', ['a'], ['Statistics'], ['#57c5a5']);
+        this.createBarChart('morris-bar-example', $barData, 'y', ['a'], ['Statistics'], ['#42a5f5']);
 
         //create line chart
         var $data  = [
@@ -85,7 +85,7 @@
             { y: '2014', a: 75, b: 50 },
             { y: '2015', a: 100, b: 70 }
           ];
-        this.createLineChart('morris-line-example', $data, 'y', ['a','b'], ['Series A','Series B'],['0.9'],['#ffffff'],['#999999'], ['#57c5a5','#9adcc9']);
+        this.createLineChart('morris-line-example', $data, 'y', ['a','b'], ['Series A','Series B'],['0.9'],['#ffffff'],['#999999'], ['#42a5f5','#90caf9']);
 
         //creating donut chart
         var $donutData = [
@@ -93,7 +93,7 @@
                 {label: "In-Store Sales", value: 30},
                 {label: "Mail-Order Sales", value: 20}
             ];
-        this.createDonutChart('morris-donut-example', $donutData, ['#57c5a5','#79d1b7',"#9adcc9"]);
+        this.createDonutChart('morris-donut-example', $donutData, ['#42a5f5', "#64b5f6","#90caf9"]);
     },
     //init
     $.Dashboard1 = new Dashboard1, $.Dashboard1.Constructor = Dashboard1

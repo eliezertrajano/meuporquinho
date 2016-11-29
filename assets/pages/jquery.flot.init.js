@@ -297,7 +297,7 @@
 				borderWidth : 1,
 				borderColor : "#eeeeee"
 			},
-			colors : ['#57c5a5', '#ddd', "#3ec845"],
+			colors : ['#42a5f5', '#ddd', "#4667cc"],
 			tooltip : true,
 			tooltipOpts : {
 				defaultTheme : false
@@ -338,19 +338,19 @@
 		var uploads = [[0, 9], [1, 8], [2, 5], [3, 8], [4, 5], [5, 14], [6, 10],[7, 8], [8, 5], [9, 14], [10, 10]];
 		var downloads = [[0, 5], [1, 12], [2, 4], [3, 3], [4, 12], [5, 11], [6, 14],[7, 12], [8, 8], [9, 4], [10, 8]];
 		var plabels = ["Revenue", "Sales"];
-		var pcolors = ['#ddd', '#57c5a5'];
-		var borderColor = '#f9f9f9';
-		var bgColor = '#fff';
+		var pcolors = ['#ddd', '#86C3F4'];
+		var borderColor = '#eee';
+		var bgColor = '#f5f5f5';
 		this.createPlotGraph("#website-stats", uploads, downloads, plabels, pcolors, borderColor, bgColor);
 
 		//Pie graph data
 		var pielabels = ["Desktops", "Laptops", "Tablets"];
 		var datas = [20, 30, 15];
-		var colors = ['#57c5a5','#79d1b7',"#9adcc9"];
+		var colors = ['#42a5f5', '#64b5f6', "#90caf9"];
 		this.createPieGraph("#pie-chart #pie-chart-container", pielabels, datas, colors);
 
 		//real time data representation
-		var plot = this.createRealTimeGraph('#flotRealTime', this.randomData(), ['#57c5a5']);
+		var plot = this.createRealTimeGraph('#flotRealTime', this.randomData(), ['#86C3F4']);
 		plot.draw();
 		var $this = this;
 		function updatePlot() {
@@ -365,7 +365,7 @@
 		//Donut pie graph data
 		var donutlabels = ["Desktops", "Laptops", "Tablets", "Mobiles"];
 		var donutdatas = [35, 20, 10, 20];
-		var donutcolors = ['#4eb194','#57c5a5','#79d1b7',"#9adcc9"];
+		var donutcolors = ['#64b5f6', '#90caf9', "#bbdefb", "#42a5f5"];
 		this.createDonutGraph("#donut-chart #donut-chart-container", donutlabels, donutdatas, donutcolors);
 
 		//Combine graph data
@@ -485,7 +485,7 @@ $(document).ready(function() {
 					color: '#bdbdbd'
 				}
 			},
-			colors: ['#57c5a5','#79d1b7',"#9adcc9"],
+			colors: ['#42a5f5', '#64b5f6', "#90caf9"],
 			tooltip: true, //activate tooltip
 			tooltipOpts: {
 				content: "%s : %y.0",

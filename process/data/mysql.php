@@ -20,6 +20,11 @@ class mysql {
 		$this->con=mysql_connect($db['host'],$db['user'],$db['pass'],true) or die ('Error connecting to MySQL');
 		mysql_select_db($db['db'],$this->con) or die('Database '.$db['db'].' does not exist!');
 		mysql_set_charset('utf8');
+		mysql_query("SET NAMES 'utf8'");
+		mysql_query('SET character_set_connection=utf8');
+		mysql_query('SET character_set_client=utf8');
+		mysql_query('SET character_set_results=utf8');
+		
 	}
 	function __destruct() {
 		mysql_close($this->con);
@@ -103,6 +108,7 @@ class mysql {
 		return $result[$field];
 	}
 	function update($table=null,$array_of_values=array(),$conditions='FALSE') {
+
 		if ($table===null || empty($array_of_values)) return false;
 		$what_to_set = array();
 		foreach ($array_of_values as $field => $value) {
@@ -126,6 +132,7 @@ class mysql {
 			else $values[]="'".mysql_real_escape_string($value,$this->con)."'";
 		}
 		$s = "INSERT INTO $table (".implode(',',$fields).') VALUES ('.implode(',',$values).')';
+
 		if (mysql_query($s,$this->con)) return mysql_insert_id($this->con);
 		echo $s;
 		return false;

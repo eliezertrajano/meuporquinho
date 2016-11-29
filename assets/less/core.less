@@ -1,6 +1,7 @@
 
-@import url(https://fonts.googleapis.com/css?family=Arimo:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 @import url(https://fonts.googleapis.com/css?family=Karla:400,700);
+@import url(https://fonts.googleapis.com/css?family=Rancho);
 
 
 @import "variables.less";
@@ -46,7 +47,6 @@ html {
 h1, h2, h3, h4, h5, h6 {
   color: #505458;
   margin: 10px 0;
-  font-weight: 700;
 }
 
 h1 {
@@ -106,7 +106,7 @@ a {
 }
 
 .container {
-  width: auto;
+  width: 95%;
 }
 
 .container-alt {
@@ -119,13 +119,13 @@ a {
 /* Footer */
 .footer {
   border-top: 1px solid fade(@muted,20%);
-  bottom: 0;
+  bottom: 0px;
   color: @muted;
   text-align:left !important;
   padding: 19px 30px 20px;
   position: absolute;
-  right: 0;
-  left: 240px;
+  right: 0px;
+  left: 250px;
 }
 
 #wrapper {
@@ -147,7 +147,7 @@ a {
   font-weight: 600;
   margin-bottom: 0px;
   margin-top: 0px;
-  line-height: 42px;
+  line-height: 80px;
   font-family: @font-secondary;
 }
 
@@ -313,12 +313,6 @@ a {
   margin-left: -20px;
   margin-right: -20px;
 }
-.text-overflow {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 .b-0 {
   border: none !important;
 }
@@ -373,11 +367,10 @@ a {
 /* Card Box */
 .card-box{
   padding: 20px;
-  background-color: @white;
   //box-shadow: 0 0px 8px 0 rgba(0,0,0,0.06),0 1px 0px 0 rgba(0,0,0,0.02);
   .border-radius(5px);
   margin-bottom: 20px;
-  border: 1px solid darken(@lightdark,5%);
+  border: 1px solid darken(@lightdark,10%);
   //background-color: @white;
 
   .card-drop {
@@ -458,14 +451,11 @@ a {
 
 
 .nav-pills-custom {
-  margin-bottom: 20px;
-
   li {
     a{
       padding: 5px 18px;
       border-radius: 20px;
-      color: @custom !important;
-      line-height: 28px !important;
+      color: @custom;
     }
   }
   li.active {
@@ -627,10 +617,10 @@ textarea.form-control {
   min-height: 90px;
 }
 .form-control {
-    background-color: @white !important;
-    border: 1px solid darken(@lightdark,10%);
+    background-color: @lightdark !important;
+    border: 1px solid darken(@lightdark,15%);
     border-radius: 4px;
-    color: @dark;
+    color: #565656;
     padding: 7px 12px;
     height: 38px;
     max-width: 100%;
@@ -695,7 +685,7 @@ textarea.form-control {
 
 /* Labels */
 .label {
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.05em;
   padding: .3em .6em .3em;
 }
@@ -806,7 +796,7 @@ textarea.form-control {
 .pagination > li > a,
 .pagination > li > span {
    color: @dark;
-  background-color: @white;
+  background-color: @lightdark;
 }
 
 .pagination > li > a:hover,
@@ -847,7 +837,7 @@ textarea.form-control {
    -webkit-border-radius: 3px;
    border-radius: 3px;
    color: @dark;
-  background-color: @white;
+  background-color: @lightdark;
 }
 
 .pager .disabled>a, .pager .disabled>a:focus, .pager .disabled>a:hover,
@@ -861,42 +851,42 @@ textarea.form-control {
 /* Tabs */
 .tab-content {
   padding: 20px;
-  border: 1px solid darken(@lightdark,5%);
+  border: 2px solid darken(@lightdark,5%);
   border-top: none;
-  background-color: @white;
+}
+.nav.nav-tabs {
+  li {
+    a{
+
+    }
+  }
 }
 .nav-tabs {
-  border-bottom: 1px solid darken(@lightdark,5%);
+  border-bottom: 2px solid darken(@lightdark,5%);
 }
 .nav-tabs>li>a {
   padding: 12px 18px;
-  color: @dark !important;
-  font-weight: 700;
-  line-height: 22px;
-
-  &:hover {
-    border-bottom: 0 !important;
-  }
+  color: @dark;
+  font-weight: 500;
 }
-.nav-tabs > li {
+.nav-tabs>li {
     margin-bottom: -2px;
 }
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-  border: 1px solid darken(@lightdark,5%);
+  border: 2px solid darken(@lightdark,5%);
   border-bottom: transparent;
-  background-color: @white;
+  background-color: @lightdark;
 }
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus {
   border-bottom: transparent;
 }
 .nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:focus, .nav-tabs.nav-justified>.active>a:hover {
-  border: 1px solid darken(@lightdark,5%);
+  border: 2px solid darken(@lightdark,5%);
 }
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-    background-color: @white;
+    background-color: @lightdark;
     border-color: darken(@lightdark,5%);
 }
-
 /* List group */
 
 .list-group-item {
@@ -1061,7 +1051,8 @@ textarea.form-control {
 
 
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
-    background-color: fade(@muted,10%);
+    background-color: @custom;
+    border-color: @custom;
 }
 
 .nav-pills > .active > a > .badge {
@@ -1091,8 +1082,8 @@ textarea.form-control {
 
 .input-group-addon {
   border-radius: 2px;
-  background-color: darken(@lightdark,5%);
-  border: 1px solid darken(@lightdark,5%);
+  background-color: darken(@lightdark,15%);
+  border: 1px solid darken(@lightdark,15%);
 }
 
 

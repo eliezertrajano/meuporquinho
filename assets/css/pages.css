@@ -40,7 +40,7 @@ a.editable-click:hover {
   width: 100%;
 }
 .bootstrap-tagsinput .label-info {
-  background-color: #57c5a5 !important;
+  background-color: #2196f3 !important;
   display: inline-block;
   padding: 5px;
   margin-bottom: 3px;
@@ -102,7 +102,7 @@ a.editable-click:hover {
 }
 .select2-results .select2-highlighted {
   color: #ffffff;
-  background-color: #57c5a5;
+  background-color: #2196f3;
 }
 .select2-drop-active {
   border: 1px solid #e3e3e3 !important;
@@ -132,8 +132,8 @@ a.editable-click:hover {
   padding: 4px 7px 4px 18px;
   margin: 7px 0 3px 5px;
   color: #ffffff;
-  background: #57c5a5;
-  border-color: #57c5a5;
+  background: #2196f3;
+  border-color: #2196f3;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -214,13 +214,13 @@ a.editable-click:hover {
 .datepicker table tr td span.active:hover[disabled],
 .datepicker table tr td span.active.disabled[disabled],
 .datepicker table tr td span.active.disabled:hover[disabled] {
-  background-color: #57c5a5;
+  background-color: #2196f3;
 }
 .datepicker table tr td.active,
 .datepicker table tr td.active:hover,
 .datepicker table tr td.active.disabled,
 .datepicker table tr td.active.disabled:hover {
-  background-color: #57c5a5 !important;
+  background-color: #2196f3 !important;
   background-image: none;
   box-shadow: none;
   text-shadow: none;
@@ -305,13 +305,8 @@ a.editable-click:hover {
   opacity: 0.5;
 }
 /* Summernote */
-.note-editor .dropdown-menu a:hover h1,
-.note-editor .dropdown-menu a:hover h2,
-.note-editor .dropdown-menu a:hover h3,
-.note-editor .dropdown-menu a:hover h4,
-.note-editor .dropdown-menu a:hover h5,
-.note-editor .dropdown-menu a:hover h6 {
-  color: #ffffff;
+.note-editor .btn {
+  background-color: transparent !important;
 }
 .note-editor.note-frame {
   border: 1px solid #eeeeee;
@@ -345,10 +340,10 @@ a.editable-click:hover {
   width: 100%;
 }
 .jFiler-theme-default .jFiler-input-button {
-  background-color: #57c5a5;
+  background-color: #2196f3;
   background-image: none !important;
   color: #ffffff;
-  border: 1px solid #57c5a5 !important;
+  border: 1px solid #2196f3 !important;
 }
 .jFiler-input-text h3 {
   font-family: 'Karla', sans-serif;
@@ -365,7 +360,7 @@ a.editable-click:hover {
   opacity: 0.9;
 }
 .toast {
-  background-color: #57c5a5;
+  background-color: #2196f3;
 }
 .toast-success {
   background-color: rgba(62, 200, 69, 0.8);
@@ -479,7 +474,7 @@ a.editable-click:hover {
   border-radius: 3px;
 }
 .legend table {
-  background-color: #ffffff;
+  background-color: #f5f5f5;
 }
 .legend tr {
   height: 22px;
@@ -527,7 +522,7 @@ a.editable-click:hover {
 .ct-chart .ct-series.ct-series-a .ct-line,
 .ct-chart .ct-series.ct-series-a .ct-point,
 .ct-chart .ct-series.ct-series-a .ct-slice-donut {
-  stroke: #57c5a5;
+  stroke: #2196f3;
 }
 .ct-chart .ct-series.ct-series-b .ct-bar,
 .ct-chart .ct-series.ct-series-b .ct-line,
@@ -567,7 +562,7 @@ a.editable-click:hover {
 }
 .ct-series-a .ct-area,
 .ct-series-a .ct-slice-pie {
-  fill: #57c5a5;
+  fill: #2196f3;
 }
 .ct-series-b .ct-area,
 .ct-series-b .ct-slice-pie {
@@ -630,7 +625,7 @@ a.editable-click:hover {
   color: #ffffff;
   font-size: 16px;
   line-height: 40px;
-  background: #57c5a5;
+  background: #2196f3;
   border-radius: 4px;
   padding: 10px 20px;
 }
@@ -645,13 +640,13 @@ a.editable-click:hover {
   bottom: -15px;
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-top: 16px solid #57c5a5;
+  border-top: 16px solid #2196f3;
 }
 .gmaps-overlay_arrow.below {
   top: -15px;
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-bottom: 16px solid #57c5a5;
+  border-bottom: 16px solid #2196f3;
 }
 .jvectormap-zoomin,
 .jvectormap-zoomout {
@@ -675,16 +670,6 @@ a.editable-click:hover {
 }
 .logo-alt-box .logo {
   float: none;
-  color: #435966 !important;
-  font-size: 24px;
-  letter-spacing: .06em;
-  line-height: 46px;
-}
-.logo-alt-box .logo span span {
-  color: #57c5a5;
-}
-.logo-alt-box h5 {
-  font-size: 12px;
 }
 .user-thumb {
   position: relative;
@@ -696,8 +681,8 @@ a.editable-click:hover {
   width: 88px;
 }
 .ex-page-content .text-error {
-  color: #57c5a5;
-  text-shadow: rgba(87, 197, 165, 0.3) 5px 1px;
+  color: #2196f3;
+  text-shadow: rgba(33, 150, 243, 0.3) 5px 1px;
   font-size: 98px;
   font-weight: 700;
   line-height: 150px;

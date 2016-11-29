@@ -11,22 +11,24 @@ if (!isset($_SESSION)) {
 
  //zerando todos os registros
   $data = array (
-			    'tipo'=> '0'
+			    'seq_categoria'=> '0'
 		    );
 
-	$generico->updatedir($data,"tarefas", "1=1");
+	$generico->updatedir($data,"lancamento", "seq_usuario=".$_SESSION["id_usuario"]." and tip_origem <> 'MAN'");
 
  //Incluindo Nova categorizaçao
 
-  $itens = $generico->listar("tipo_palavras","descricao,tipo","1=1", "descricao");
+  $itens = $generico->listar("regra","des_regra,seq_categoria","seq_usuario=".$_SESSION["seq_usuario"], "des_regra");
+
   foreach($itens as $key ){
         $data = array (
-			    'tipo'=> $key["tipo_palavras"]["tipo"]
+			    'seq_categoria'=> $key["regra"]["seq_categoria"]
 		    );
-	     $generico->updatedir($data,"tarefas", "upper(item) like upper('%".$key["tipo_palavras"]["descricao"]."%')");
+		echo "upper(txt_lancamento) like upper('%".$key["regra"]["des_regra"]."%') and seq_usuario=".$_SESSION["seq_usuario"]." and tip_origem <> 'MAN'";
+	     $generico->updatedir($data,"lancamento", "upper(txt_lancamento) like upper('%".$key["regra"]["des_regra"]."%') and seq_usuario=".$_SESSION["seq_usuario"]." and tip_origem <> 'MAN'");
 	}
 
-
+/*
 $itens = $generico->listar("tipo_tarefas","id,tipo","1=1", "tipo");
 
 
@@ -39,6 +41,7 @@ $itens = $generico->listar("tipo_tarefas","id,tipo","1=1", "tipo");
 	     $generico->updatedir($data,"tarefas", "id ='".$key["tipo_tarefas"]["id"]."'");
 	}
 	
+	*/
 	
 
 

@@ -153,7 +153,7 @@ function salvar(item) {
 		$(this).val($(this).val().split("-")[2] + "/" + $(this).val().split("-")[1] + "/" + $(this).val().split("-")[0]);
 	});
 
-	funcoes = "";
+	var funcoes = "";
 	if (arguments[1]) {
 		funcoes = arguments[1];
 	}
@@ -281,7 +281,7 @@ function carregarValores(data) {
 function criarTabela() {
 	var itens = arguments[0];
 	
-	var body = "<table class='table table-bordered'>";
+	var body = "";
 
 	for (var k in itens) {
 	
@@ -299,7 +299,7 @@ function criarTabela() {
 			}
 		body = body + "</tr>";
 	}
-	body = body + "</tbody> </table>";
+	body = body + "";
 	$(arguments[1]).html(body);
 	if(arguments[4]){
 		arguments[4]();
@@ -340,5 +340,25 @@ $.ajaxSetup ({
     // Disable caching of AJAX responses
     cache: false
 });
+
+function atualizarLancamentos(){
+	$("#label_status").html("<img src='/assets/images/default.svg' width='20px'> Atualizando Lancamentos...");
+
+		$.ajax({
+			method: 'POST',
+			url: 'process/utils/processarArquivoBanco.php',
+			success: function(e){
+				$("#label_status").html("<img src='/assets/images/default.svg' width='20px'> Processando Categorias...");
+				$.ajax({
+					method: 'POST',
+					url: 'process/utils/processarCategorias.php',
+					success: function(f){
+             $("#label_status").html("Finalizado.");
+						 iniciar();
+					}
+			});
+			}
+	});
+}
 // INIT
 

@@ -6,161 +6,185 @@
 ?>
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
 
-</html>
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-  <meta name="author" content="Coderthemes">
+        <title>Meu_Porquinho</title>
 
-  <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <!--Morris Chart CSS -->
+		<link rel="stylesheet" href="assets/plugins/morris/morris.css">
 
-  <title>Meu Porquinho</title>
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+			  <link href="assets/css/fileupload.css" rel="stylesheet" type="text/css" />
+			  <style>
+					@media (max-width: 1024px) 
+          {
+						.container {
+								padding-right: 2px;
+								padding-left: 4px;
+								margin-right: auto;
+								margin-left: auto;
+							min-height: 60px;
+						}
+						
+						.content-page{
+							   top: -82px;
+                 position: relative;
+						}
+					}
+			  </style>
+	
 
-  <!--Morris Chart CSS -->
-  <link rel="stylesheet" href="assets/plugins/morris/morris.css">
-
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
-  <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
-  <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
-  <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
-  <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
-  <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
-
-  <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
+        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-  <script src="assets/js/modernizr.min.js"></script>
-  <script>
-    var resizefunc = [];
-  </script>
-
-  <!-- jQuery  -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/detect.js"></script>
-  <script src="assets/js/fastclick.js"></script>
-  <script src="assets/js/jquery.slimscroll.js"></script>
-  <script src="assets/js/jquery.blockUI.js"></script>
-  <script src="assets/js/waves.js"></script>
-  <script src="assets/js/wow.min.js"></script>
-  <script src="assets/js/jquery.nicescroll.js"></script>
-  <script src="assets/js/jquery.scrollTo.min.js"></script>
-
-  <!--Morris Chart
-<script src="assets/plugins/morris/morris.min.js"></script>
-<script src="assets/plugins/raphael/raphael-min.js"></script>
-
- Counter Up  -->
-  <script src="assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
-  <script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
-
-  <!-- Dashboard init
-<script src="assets/pages/jquery.dashboard.js"></script>
-
- -->
-  <!-- App js -->
-  <script src="assets/js/jquery.core.js"></script>
-  <script src="assets/js/jquery.app.js"></script>
+        <script src="assets/js/modernizr.min.js"></script>
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
 
 
-</head>
+        <!-- Counter Up  -->
+        <script src="assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
+        <script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
 
-<body class="fixed-left">
+        <!-- Dashboard init -->
+       <!-- <script src="assets/pages/jquery.dashboard.js"></script> -->
+
+        <!-- App js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+			  <script src="assets/js/jquery.uploadfile.min.js"></script>
+
+    </head>
 
 
-  <!-- Begin page -->
-  <div id="wrapper">
+    <body>
+	  <div id="fileuploader"></div>
+			
 
-    <!-- Top Bar Start -->
-    <div class="topbar">
+			
+        <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container">
 
-      <!-- LOGO -->
-      <div class="topbar-left">
-        <div class="text-center">
-          <a href="/meuporquinho" class="logo">
-                            Meu Porquinho
+                    <!-- LOGO -->
+                    <div class="topbar-left">
+                        <a href="index.php" class="logo">
+                            <span>MeuPorquinho</span>
                             <!--<span><img src="assets/images/logo.png" alt="logo" style="height: 20px;"></span>-->
                         </a>
-        </div>
-      </div>
+                    </div>
+                    <!-- End Logo container-->
 
-      <!-- Button mobile view to collapse sidebar menu -->
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="">
+                    <div class="navbar-custom navbar-left">
+                        <div id="navigation">
+                            <!-- Navigation Menu-->
+                            <ul class="navigation-menu">
+       
+                                <li class="has-submenu">
+                                    <a href="?q=home-grafico">
+                                        <span><i class="zmdi zmdi-invert-colors"></i></span>
+                                        <span> Listagem</span> </a>
+                       
+                                </li>
+															  <li class="has-submenu">
+                                     <a href="?q=regras">
+                                        <span><i class="zmdi zmdi-invert-colors"></i></span>
+                                        <span> Regras</span> </a>
+                       
+                                </li>
+																<li class="has-submenu">
+                                     <a href="?q=categorias">
+                                        <span><i class="zmdi zmdi-invert-colors"></i></span>
+                                        <span> Categorias</span> </a>
+                       
+                                </li>
+
+                            </ul>
+                            <!-- End navigation menu  -->
+                        </div>
+                    </div>
 
 
-            <form role="search" class="navbar-left app-search pull-left hidden-xs">
-              <input type="text" placeholder="Search..." class="form-control">
-              <a href=""><i class="fa fa-search"></i></a>
-            </form>
+                    <div class="menu-extras" style=" float: left;">
 
-
-            <ul class="nav navbar-nav navbar-right pull-right">
-
-              <li>
-                <!-- Notification -->
-                <div class="notification-box">
-
-
-
-
-                  <ul class="list-inline m-b-0">
+                        <ul class="nav navbar-nav navbar-right pull-right">
+                            <li>
+                                <form role="search" class="navbar-left app-search pull-left hidden-xs">
+                                     <input type="text" placeholder="Search..." class="form-control">
+                                     <a href=""><i class="fa fa-search"></i></a>
+                                </form>
+                            </li>
+                            <li>
+                                <!-- Notification -->
                     
-                    <li>
-                      <a href="?q=detalhe-novo" class="">
-                        <i class="zmdi zmdi-open-in-new"></i>
-                      </a>
-                    </li>                    
-                    <li>
-                      <a href="javascript:void(0);" class="">
-                        <i class="zmdi zmdi-fire"></i>
-                      </a>
-                    </li>
+                                <!-- End Notification bar -->
+                            </li>
 
+      
+                        </ul>
 
-                    <li>
-                      <a href="javascript:void(0);" class="right-bar-toggle">
-                        <i class="zmdi zmdi-notifications-none"></i>
-                      </a>
+                    </div>
+									<div id="label_status" class="navbar-left app-search pull-left hidden-xs" style="color: #C1C5C8;margin: 19px;">
+										
+									</div>
+									            <div class="notification-box" style="float: right;">
+                                    <ul class="list-inline m-b-0">
+                                        <li>
+                                            <a href='javascript:$("[type=file]")[0].click();' class="right-bar-toggle">
+                                                <i class="zmdi zmdi-collection-text"></i>
+                                            </a>
+                              
+                                        </li>
+																			                                     <li>
+                                            <a href='javascript:atualizarLancamentos()' class="right-bar-toggle">
+                                                <i class="zmdi zmdi-fire"></i>
+                                            </a>
+                                            <div class="noti-dot">
+                                                <span class="dot"></span>
+                                                <span class="pulse"></span>
+                                            </div>
+                                        </li>
+																				<li>
+                                            <a href='https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://gerenciador.meuporquinho.site/login.php' class="right-bar-toggle">
+                                                <i class="zmdi zmdi-run"></i>
+                                            </a>
+                      
+                                        </li>
+                                    </ul>
+                                </div>
 
-                      <div class="noti-dot">
-                        <span class="dot"></span>
-                        <span class="pulse"></span>
-                      </div>
-                    </li>
-
-
-                  </ul>
                 </div>
-                <!-- End Notification bar -->
-              </li>
+            </div>
 
-              <li class="dropdown user-box">
-                <a href="" class="dropdown-toggle waves-effect waves-light profile " data-toggle="dropdown" aria-expanded="true">
-                  <img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle user-img">
-                  <div class="user-status away"><i class="zmdi zmdi-dot-circle"></i></div>
-                </a>
 
-                <ul class="dropdown-menu">
-                  <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
-                  <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
-                  <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
-                  <li><a href="javascript:void(0)"><i class="ti-power-off m-r-5"></i> Logout</a></li>
-                </ul>
-              </li>
-            </ul>
-
-          </div>
-          <!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+        </header>
+        <!-- End Navigation Bar-->
+      
+              <div class="wrapper">
+            <div class="container">

@@ -1,10 +1,18 @@
-<!DOCTYPE html>
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+session_destroy();
+?><!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="Coderthemes">
+    <meta name="google-signin-client_id" content="306249428147-inj8d8mgl2rhlgn1d6miprrdalhemq24.apps.googleusercontent.com">
 
     <!-- App Favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -34,7 +42,7 @@
     <body>
 
         <div class="text-center logo-alt-box">
-            <a href="index.html" class="logo">Meu Porquinho</a>
+            <a href="index.php" class="logo">Meu Porquinho</a>
             <h5 class="text-muted m-t-0">Responsive Admin Dashboard</h5>
         </div>
 
@@ -44,74 +52,19 @@
                 <div class="text-center">
                     <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
                 </div>
-                <div class="panel-body">
-                    <form class="form-horizontal m-t-10" action="process/utils/validauser.php">
+                 <div class="g-signin2" data-onsuccess="onSignIn">  Google+</div>
 
-                      <div class="form-group ">
-                        <div class="col-xs-12">
-                        <input class="form-control" type="text" required="" placeholder="Seu usuário">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Sua senha">
-                        </div>
-                    </div>
-
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <div class="checkbox checkbox-custom">
-                                <input id="checkbox-signup" type="checkbox">
-                                <label for="checkbox-signup">Lembrar</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group text-center m-t-30">
-                        <div class="col-xs-12">
-                            <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light text-uppercase" type="submit">Acessar</button>
-                        </div>
-                    </div>
-
-                    <div class="form-group m-t-30 m-b-0">
-                        <div class="col-sm-12">
-                            <a href="page-recoverpw.html" class="text-muted"><i class="fa fa-lock m-r-5"></i>Esqueceu sua senha?</a>
-                        </div>
-                    </div>
-
-                    <div class="form-group m-t-20 m-b-0">
-                        <div class="col-sm-12 text-center"><h4>Use outras contas</h4></div>
-                    </div>
-
-                    <div class="form-group m-b-0 text-center">
-                        <div class="col-sm-12">
-                            <button type="button" class="btn btn-facebook waves-effect waves-light m-t-20"><i
-                                class="fa fa-facebook m-r-5"></i> Facebook
-                            </button>
-                            <button type="button" class="btn btn-twitter waves-effect waves-light m-t-20"><i
-                                class="fa fa-twitter m-r-5"></i> Twitter
-                            </button>
-                            <button type="button" class="btn btn-googleplus waves-effect waves-light m-t-20"><i
-                                class="fa fa-google-plus m-r-5"></i> Google+
-                            </button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
+      
+      
+      
         <!-- end card-box -->
 
-        <div class="row">
-            <div class="col-sm-12 text-center">
-               <p class="text-muted">Não tem uma conta? <a href="page-register.html" class="text-primary m-l-5"><b>Cadastre-se</b></a></p>
-           </div>
-       </div>
+
    </div>
    <!-- end wrapper page -->
-   <script>
-    var resizefunc = [];
-</script>
+
 
 <!-- jQuery  -->
 <script src="assets/js/jquery.min.js"></script>
@@ -128,6 +81,40 @@
 <!-- App js -->
 <script src="assets/js/jquery.core.js"></script>
 <script src="assets/js/jquery.app.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
+      
+      
+         <script>
+    var resizefunc = [];
+       //in your callback page (can be the same page)
+  
+ function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+   $.post( "/validar.php", profile).done(function(response) {
+     
+     if(parseInt(response.split("#")[0])!=0){
+       $('body').append("<form action='/process/utils/validauser.php' id='validauser' method='POST' ><input type='hidden' name='token' value='"+response.split("#")[1]+"'></form>");
+       $('#validauser').submit();        
+     }else{
+        alert('Sinto muito, o usuário não está habilitado para o uso do MeuPorquinho');
+       signOut();
+     }
+
+   });
+
+
+}
+           
+ function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+
+
+    
+</script>
 </body>
 </html>
