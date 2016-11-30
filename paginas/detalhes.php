@@ -82,9 +82,10 @@ $.getScript( "/assets/js/geral.js", function( ) {
 
 	function iniciar() {
 		$('#lancamento').trigger("reset");
+		var consulta = '<?php if(isset($_GET["tipo"])){ echo 'LISTAR_VALORES_DETALHES'; }else{ echo 'LISTAR_VALORES_DETALHES_NULOS';}?>';
 		
 		carregarValores({
-			consulta: "LISTAR_VALORES_DETALHES",
+			consulta: consulta,
 			parametro: "<?php echo $_GET["ano"] ?>,<?php echo $_GET["mes"] ?>,<?php echo $_GET["tipo"] ?>"
 		}, function(obj) {
 			console.log(obj);

@@ -59,7 +59,7 @@ function processarArquivo($arquivo) {
 			  "tip_origem"=>getCartao($data),
 			  "cod_identificacao"=>getId($value),
 			  "seq_usuario"=> $_SESSION["seq_usuario"],
-			  "seq_categoria"=>'0'
+			
 			
 		);
                // echo 'id--->';

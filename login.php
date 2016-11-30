@@ -18,7 +18,7 @@ session_destroy();
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- App title -->
-    <title>Flacto - Responsive Admin Dashboard Template</title>
+    <title>Meu porquinho - finanças pessoais</title>
 
     <!-- App CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -43,25 +43,21 @@ session_destroy();
 
         <div class="text-center logo-alt-box">
             <a href="index.php" class="logo">Meu Porquinho</a>
-            <h5 class="text-muted m-t-0">Responsive Admin Dashboard</h5>
+            <h5 class="text-muted m-t-0">Um gerenciador financeiro rápido e fácil <br /> para ajudar na sua prosperidade financeira</h5>
         </div>
 
         <div class="wrapper-page">
 
         	<div class="m-t-30 card-box">
                 <div class="text-center">
-                    <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
+                    <h4 class="text-uppercase font-bold m-b-0">Acesse com uma das suas contas</h4>
                 </div>
-                 <div class="g-signin2" data-onsuccess="onSignIn">  Google+</div>
-
+                <div class="wrapper-md">
+                    <div class="g-signin2" data-onsuccess="onSignIn">  Google+</div>
+                </div>
             </div>
         </div>
-      
-      
-      
         <!-- end card-box -->
-
-
    </div>
    <!-- end wrapper page -->
 
@@ -91,14 +87,20 @@ session_destroy();
   
  function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
-   $.post( "/validar.php", profile).done(function(response) {
-     
+   $.post( "/validar.php", profile).done(function(response) {     
      if(parseInt(response.split("#")[0])!=0){
        $('body').append("<form action='/process/utils/validauser.php' id='validauser' method='POST' ><input type='hidden' name='token' value='"+response.split("#")[1]+"'></form>");
        $('#validauser').submit();        
      }else{
-        alert('Sinto muito, o usuário não está habilitado para o uso do MeuPorquinho');
-       signOut();
+       if(response.split("#")[1]=="NA"){
+         alert('Usuário, identificamos seu registro. Porém você ainda não foi autorizado. Aguarde Autorização');
+         signOut();
+       }
+       if(response.split("#")[1]=="I"){
+         alert('Parabéns, você foi registrado. Aguarde Autorização para acesso ao sistema');
+         signOut();
+       }
+        
      }
 
    });

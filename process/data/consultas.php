@@ -36,10 +36,116 @@ define("LISTAR_VALORES_ANO_DETALHES", "select id,nom_categoria,ind_categoria,tip
  group by c.id
  order by c.ind_categoria desc");
 
-define("EXIBIR_GURPOSCATEGORIA","select c.tip_grupo, ca.nom_grupo from categoria c
-left join categoria_grupo ca on ca.tip_grupo = c.tip_grupo
-where c.seq_usuario ='".$_SESSION["seq_usuario"]."'
-GROUP by c.tip_grupo order by ca.ind_ordem asc");
+
+
+define("EXIBIR_GURPOSCATEGORIA","(SELECT cg.nom_grupo,cg.tip_grupo,
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 1 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Janeiro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 2 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Fevereiro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 3 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Marco',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 4 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Abril',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 5 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Maio',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 6 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Junho',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 7 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Julho',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 8 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Agosto',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 9 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Setembro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 10 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Outubro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 11 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Novembro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 12 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Dezembro'
+                                from categoria_grupo cg
+                                inner join categoria cat
+                                on cg.tip_grupo = cat.tip_grupo
+                                where cat.seq_usuario ='".$_SESSION["seq_usuario"]."'
+                                group by cg.tip_grupo
+                                order by cg.tip_classificacao desc, cg.nom_grupo asc)
+                                union
+                                (SELECT 'Sem categoria','SEM',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 1 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Janeiro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 2 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Fevereiro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 3 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Marco',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 4 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Abril',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 5 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Maio',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 6 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Junho',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 7 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Julho',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 8 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Agosto',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 9 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Setembro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 10 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Outubro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 11 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Novembro',
+                                (select coalesce(round(sum(val_lancamento),2),0) from lancamento l where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 12 and l.seq_usuario = '".$_SESSION["seq_usuario"]."' and l.seq_categoria is null) as 'Dezembro')");
+
+define("RESUMO_GASTOS","(SELECT 
+            case upper(trim(tip_classificacao))
+                when 'I' then 'Total de Investimentos'  
+                when 'R' then 'Total de Receitas'     
+            end as tip_classificacao,
+            
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 1 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Janeiro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 2 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Fevereiro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 3 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Marco',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 4 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Abril',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 5 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Maio',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 6 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Junho',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 7 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Julho',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 8 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Agosto',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 9 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Setembro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 10 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Outubro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 11 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Novembro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 12 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) as 'Dezembro'
+            from categoria_grupo cg
+            inner join categoria cat
+            on cg.tip_grupo = cat.tip_grupo
+            where cat.seq_usuario = '".$_SESSION["seq_usuario"]."'
+             and tip_classificacao in ('R','I')
+            group by cg.tip_classificacao
+            order by cg.tip_classificacao desc)
+            union
+            (SELECT 'Total de Despesas' as tip_classificacao,
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 1 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Janeiro',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 2 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Fevereiro',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 3 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Marco',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 4 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Abril',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 5 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Maio',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 6 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Junho',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 7 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Julho',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 8 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Agosto',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 9 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Setembro',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 10 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Outubro',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 11 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Novembro',
+            (select sum(d.val_lancamento) from vw_despesa d where d.ano_lancamento = '".$parametro[0]."' and d.mes_lancamento = 12 and d.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Dezembro')
+            union
+            (SELECT 'Saldo',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 1 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Janeiro',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 2 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Fevereiro',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 3 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Marco',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 4 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Abril',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 5 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Maio',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 6 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Junho',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 7 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Julho',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 8 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Agosto',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 9 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Setembro',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 10 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Outubro',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 11 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Novembro',
+            (select sum(l.val_lancamento) from lancamento l where l.seq_categoria is not null and l.ind_acompanhamento = 0 and l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 12 and l.seq_usuario = '".$_SESSION["seq_usuario"]."') as 'Dezembro')
+            union
+            (SELECT 'Valor da sua hora trabalhada' as tip_classificacao,
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 1 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Janeiro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 2 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Fevereiro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 3 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Marco',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 4 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Abril',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 5 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Maio',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 6 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Junho',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 7 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Julho',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 8 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Agosto',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 9 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Setembro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 10 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Outubro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 11 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Novembro',
+            (select sum(l.val_lancamento) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 12 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo) /168 as 'Dezembro'
+            from categoria_grupo cg
+            inner join categoria cat
+            on cg.tip_grupo = cat.tip_grupo
+            where cat.seq_usuario = '".$_SESSION["seq_usuario"]."'
+             and tip_classificacao = 'R'
+            group by cg.tip_classificacao
+            order by cg.tip_classificacao desc)");
 
 
 define("MAIOR_QTD_GASTO_CATEGORIA", "
@@ -73,8 +179,18 @@ select l.id, l.txt_lancamento, l.dat_lancamento, l.txt_lancamento, l.tip_origem 
   from lancamento l
     where   
     l.ano_lancamento = trim('".$parametro[0]."')
+      and l.seq_usuario = '".$_SESSION["seq_usuario"]."' 
       and l.mes_lancamento = trim('".$parametro[1] ."')
       and l.seq_categoria =trim('".$parametro[2] ."')  ");
+
+define("LISTAR_VALORES_DETALHES_NULOS", "
+select l.id, l.txt_lancamento, l.dat_lancamento, l.txt_lancamento, l.tip_origem ,l.val_lancamento
+  from lancamento l
+    where   
+    l.ano_lancamento = trim('".$parametro[0]."')
+      and l.seq_usuario = '".$_SESSION["seq_usuario"]."' 
+      and l.mes_lancamento = trim('".$parametro[1] ."')
+      and l.seq_categoria is null  ");
 
 define("LISTAR_REGRAS", "
 select r.id,r.des_regra as regra, c.nom_categoria as categoria, 

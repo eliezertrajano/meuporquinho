@@ -11,7 +11,7 @@ if (!isset($_SESSION)) {
 
  //zerando todos os registros
   $data = array (
-			    'seq_categoria'=> '0'
+			    'seq_categoria'=> null
 		    );
 
 	$generico->updatedir($data,"lancamento", "seq_usuario=".$_SESSION["id_usuario"]." and tip_origem <> 'MAN'");

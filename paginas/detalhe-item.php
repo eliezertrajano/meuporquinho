@@ -77,7 +77,8 @@ $.getScript( "/assets/js/geral.js", function( ) {
  		$("#label_status").html("<img src='/assets/images/default.svg' width='20px'> Carregando Valores...");
 
 		carregarValores({
-			ent: "categoria"
+			ent: "categoria",
+			condicoes:"seq_usuario!<?php echo $_SESSION["seq_usuario"]?>"
 		}, function(obj) {
 			var options="";
 			for (var j in obj ) {
