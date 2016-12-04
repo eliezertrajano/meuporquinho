@@ -30,6 +30,7 @@ if (!isset($_SESSION)) {
 					<th>Descricao</th>
 					<th>Categoria</th>
 					<th>Tipo</th>
+						<th>Grupo</th>
 					<th></th>
 			</tr>
 			</thead>
@@ -74,12 +75,14 @@ if (!isset($_SESSION)) {
 	}
 
 	function deletar() {
+
 		$("#label_status").html("Atualizados.")
 		$('.x').unbind();
 		$('.x').click(function() {
 			id = $(this).attr("item");
 			remover($(this).attr("item"), 'regra',function(){iniciar();atualizarLancamentos();});
 		});
+		$('.table').DataTable();
 	}
 
 </script>

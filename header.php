@@ -27,6 +27,7 @@
         <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
 			  <link href="assets/css/fileupload.css" rel="stylesheet" type="text/css" />
+			  <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 			  <style>
 					@media (max-width: 1024px) 
           {
@@ -73,11 +74,31 @@
 
         <!-- Dashboard init -->
        <!-- <script src="assets/pages/jquery.dashboard.js"></script> -->
+			        <!-- Datatables-->
+        <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
+        <script src="assets/plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="assets/plugins/datatables/buttons.bootstrap.min.js"></script>
+        <script src="assets/plugins/datatables/jszip.min.js"></script>
+        <script src="assets/plugins/datatables/pdfmake.min.js"></script>
+        <script src="assets/plugins/datatables/vfs_fonts.js"></script>
+        <script src="assets/plugins/datatables/buttons.html5.min.js"></script>
+        <script src="assets/plugins/datatables/buttons.print.min.js"></script>
+        <script src="assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+        <script src="assets/plugins/datatables/dataTables.keyTable.min.js"></script>
+        <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="assets/plugins/datatables/responsive.bootstrap.min.js"></script>
+        <script src="assets/plugins/datatables/dataTables.scroller.min.js"></script>
 
+        <!-- App js --><!-- Datatable init js -->
+        <script src="assets/pages/jquery.datatables.init.js"></script>
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
 			  <script src="assets/js/jquery.uploadfile.min.js"></script>
+			
+			
+
 
     </head>
 
@@ -135,8 +156,8 @@
 
                         <ul class="nav navbar-nav navbar-right pull-right">
                             <li>
-                                <form role="search" class="navbar-left app-search pull-left hidden-xs">
-                                     <input type="text" placeholder="Search..." class="form-control">
+                                <form action="?q=pesquisa" method="POST" class="navbar-left app-search pull-left hidden-xs">
+                                     <input type="text" name="pesquisa" placeholder="Search..." class="form-control">
                                      <a href=""><i class="fa fa-search"></i></a>
                                 </form>
                             </li>

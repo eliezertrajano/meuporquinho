@@ -89,11 +89,14 @@ if (!isset($_SESSION)) {
 	}
 
 	function deletar() {
+
 		$("#label_status").html("Atualizados");
 		$('.x').unbind();
 		$('.x').click(function() {
 			id = $(this).attr("item");
 			remover($(this).attr("item"), 'categoria',iniciar);
 		});
+		
+				  $('.table').DataTable();
 	}
 </script>

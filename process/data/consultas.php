@@ -36,7 +36,10 @@ define("LISTAR_VALORES_ANO_DETALHES", "select id,nom_categoria,ind_categoria,tip
  group by c.id
  order by c.ind_categoria desc");
 
-
+define('SELECIONAR_LANCAMENTOS','select l.*,c.nom_categoria from lancamento l
+            left join categoria c on l.seq_categoria = c.id
+            where txt_lancamento like "%'.$parametro[0].'%"
+            and l.seq_usuario ="'.$_SESSION["seq_usuario"].'"');
 
 define("EXIBIR_GURPOSCATEGORIA","(SELECT cg.nom_grupo,cg.tip_grupo,
                                 (select coalesce(round(sum(val_lancamento),2),0) from lancamento l inner join categoria c on l.seq_categoria = c.id where l.ano_lancamento = '".$parametro[0]."' and l.mes_lancamento = 1 and l.seq_usuario = cat.seq_usuario and c.tip_grupo = cg.tip_grupo group by c.tip_grupo) as 'Janeiro',
