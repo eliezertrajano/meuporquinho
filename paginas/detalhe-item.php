@@ -10,7 +10,6 @@
 <table class="table">
 			<thead>
 			<tr>	
-					<th>Data</th>
 					<th>Descrição</th>
 					<th>Mes</th>
 				  <th>Ano</th>
@@ -21,14 +20,12 @@
 			</thead>
 			<tbody  id="detalhes">
 
-
-
 			</tbody>
 	</table>
 
 
 <br>
-Sugestão de Alteração:
+Alteração:
 <BR><BR>
 <form id="registro">
 
@@ -38,7 +35,7 @@ Sugestão de Alteração:
 <input type="hidden"  name="tip_origem" value="MAN">
 	
   <div class="form-group col-xs-3 col-sm-3 col-lg-3">
-    <label for="seq_categoria">seq_categoria:</label>
+    <label for="seq_categoria">Categoria:</label>
     <select class="form-control" name="seq_categoria"></select>
   </div>
 
@@ -48,7 +45,7 @@ Sugestão de Alteração:
   </div>
 
   <div class="form-group col-xs-3 col-sm-3 col-lg-3">
-    <label for="mes">Mes de Referência:</label>
+    <label for="mes">Mês:</label>
     <select class="form-control" name="mes_lancamento">
       <option value="1">Janeiro</option>
       <option value="2">Fevereiro</option>

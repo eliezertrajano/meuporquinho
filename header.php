@@ -44,6 +44,11 @@
                  position: relative;
 						}
 					}
+					
+					.modal-content {
+					   background-color: none !important;
+						border: none;!important;
+					}
 			  </style>
 	
 
