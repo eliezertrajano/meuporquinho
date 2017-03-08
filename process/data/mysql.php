@@ -132,7 +132,7 @@ class mysql {
 			else $values[]="'".mysql_real_escape_string($value,$this->con)."'";
 		}
 		$s = "INSERT INTO $table (".implode(',',$fields).') VALUES ('.implode(',',$values).')';
-
+//echo $s;
 		if (mysql_query($s,$this->con)) return mysql_insert_id($this->con);
 		echo $s;
 		return false;

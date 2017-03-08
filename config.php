@@ -7,7 +7,7 @@ define("SENHA_BANCO","money1010");
 // Nome do Banco
 define("BANCO","meuporquinho01");
 // host do banco
-define("HOST_BANCO","mysql.meuporquinho.site");
+define("HOST_BANCO","mysql06-farm68.kinghost.net");
 
 
 

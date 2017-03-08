@@ -179,27 +179,52 @@ function gerarColuna(id, titulo, categorias, serie) {
 
 }
 
-function gerarLinhas(id, categorias, title, series) {
-  $('#'+id).highcharts({
+function gerarLinhas(id, categorias, title, dados) {
+console.log(id);
+   
+    $(id).highcharts({
+            legend: {
+                layout: 'vertical',
+                backgroundColor: '#FFFFFF',
+                align: 'right',
+                verticalAlign: 'top',
+                x: 0,
+                y: 45
+            },
+        chart: {
+            type: 'spline',
+            zoomType: 'xy'
+        },
         title: {
-            text: title,
-            x: -20 //center
+            text: title
         },
- 
-        xAxis: {
-            categories: categorias
+        yAxis: {
+            title: {
+                text: 'Valores R$'
+            }
         },
+      
+            xAxis: {
+                categories: categorias,
+                 gridLineWidth: 1
+            },
+            tooltip: {
+                shared: true,
+                crosshairs: true
+            },
+        plotOptions: {
+        
+            series: {
+               dataLabels: {
+                    enabled: true
+                },
+                cursor: 'pointer',
+                point: {
 
-        tooltip: {
-            valuepreffix: 'R$'
+                }
+            }
         },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series:series
+        series: dados
     });
 }
 

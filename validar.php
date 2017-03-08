@@ -11,8 +11,10 @@ if (!isset($_SESSION)) {
 
 
 $generico = new Geral();
-$usuario = $generico->listar("usuario","seq_usuario,nom_usuario,ind_autorizado","num_identificacao='".$_POST["Eea"]."'  and eml_usuario='".$_POST["U3"]."'", "nom_usuario");
+$usuario = $generico->listar("usuario","seq_usuario,nom_usuario,ind_autorizado,img_foto","num_identificacao='".$_POST["Eea"]."'  and eml_usuario='".$_POST["U3"]."'", "nom_usuario");
 $max_usuario =$generico->listar("usuario","id","1=1","id desc");
+
+$_SESSION["usuario"] = $usuario;
 
 $_SESSION["hash_MeuPorquinho"]= base64_encode($_POST["Eea"]."#".$usuario[0]["usuario"]["nom_usuario"]."#".$usuario[0]["usuario"]["seq_usuario"]);
 

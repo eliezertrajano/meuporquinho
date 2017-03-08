@@ -9,13 +9,15 @@
 <br>
 <table class="table">
 			<thead>
-			<tr>	
+			<tr>
+				  <th>Data</th>
 					<th>Descrição</th>
 					<th>Mes</th>
 				  <th>Ano</th>
-				 <th>Tipo</th>
-				 <th>Origem</th>
-				<th>Valor</th>
+				  <th>Tipo</th>
+				  <th>Origem</th>
+			   	<th>Valor</th>
+			  	<th>Categoria</th>
 			</tr>
 			</thead>
 			<tbody  id="detalhes">

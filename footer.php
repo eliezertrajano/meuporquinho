@@ -131,32 +131,72 @@
 
 	function boasVindas(){
 		item = parseInt($("#btn_boasvindas").attr("item"));
-		if(item>6){ $('#modal').modal('hide');}
-		if(item==1){
-			 carregarcategorias();
-		}
+           if(parseInt(item)>6){  
+
+                $.ajax({
+                    method:'GET',
+                    url:'/process/utils/executar.php',
+                    data: { consulta:"INCLUIR_CATEGORIAS"},
+                    success:function(obj){
+                                  $.ajax({
+                                            method:'GET',
+                                            url:'/process/utils/executar.php',
+                                            data: { consulta:"INCLUIR_REGRAS"},
+                                            success:function(obj){
+                                                                $.ajax({
+                                                                        method:'GET',
+                                                                        url:'/process/utils/executar.php',
+                                                                        data: { consulta:"INCLUIR_LANCAMENTO"},
+                                                                        success:function(obj){
+
+                                                                             $('#myModal').modal('hide');
+                                                                              location.reload(); 
+                                                                        }});
+
+
+
+
+
+                                                
+                                               
+                                            }});                        
+                         
+                    }
+                });              
+    
+            }
+
 		
 		var msg = [] 
 		msg[0]=[];
-		msg[0][0]="Ótimo, antes de começar precisamos aprender alguns detalhes!";
+		msg[0][0]="Ótimo, antes de começar precisamos aprender pequenos conceitos!";
 		msg[1]=[];
-		msg[1][0]="Primeiro, nós utilizamos  Regras,  para categorizar seus Lançamentos";
+		msg[1][0]="Primeiro, nós utilizamos  regras para categorizar seus lançamentos";
 		msg[2]=[];
-		msg[2][0]="Por exemplo: A regra 'Habibs' vai categorizar todos os seus lançamento com essa palavra como 'Alimentação'";
-		msg[2][1]="43px";
+		msg[2][0]="Por exemplo: A regra 'Habibs' vai categorizar todos os lançamentos com essa palavra em 'Alimentação'";
+		msg[2][1]="40px";
 		msg[3]=[];
-		msg[3][0]="Essa categorias e regras podem ser alteradas a qualquer momento por você e  possuem agrupadores para facilitar seu acesso";
+		msg[3][0]="Essas categorias e regras podem ser alteradas a qualquer momento por você e possuem agrupadores para facilitar seu acesso";
 		msg[4]=[];
-		msg[4][0]="Segundo, Você tem acesso ao seu banco pela interner? você pode incluir seus lançamentos manualmente ou importa-los de seu banco. Pra isso, exporte seu extrato em formato ofx e clique <a href='javascript:$(\"[type=file]\")[0].click();'>aqui</a> para importa-los";
+		msg[4][0]="Segundo, Você tem acesso ao seu banco pela internet? você pode incluir seus lançamentos manualmente ou importá-los de seu banco. Para isso, exporte seu extrato em formato ofx e clique <a href='javascript:$(\"[type=file]\")[0].click();'>aqui</a> para importa-los";
 		msg[5]=[];
-		msg[5][0]="Se quizer saber mais detalhes, pode clicar no botão de interrogação, ok?";
-		
+		msg[5][0]="Se quiser saber mais detalhes, pode clicar no botão de interrogação, ok?";
+	    msg[6]=[];
+        msg[6][0]="Agora, estamos incluindo algumas regras e categorias para você!";	
 		
 		$("#btn_boasvindas").attr("item", (item+1));
-		$("#msg_boasvindas").html(msg[item][0]);		
-		if (msg[item][1]){$("#msg_boasvindas").css('font-size',msg[item][1]);}		
+
+      
+             $("#msg_boasvindas").html(msg[item][0]);        
+             if (msg[item][1]){$("#msg_boasvindas").css('font-size',msg[item][1]);} 
+
+            
+         
+             
+      
 	
 		$("#btn_boasvindas").html("próximo");
+
 	}
 
 
@@ -165,10 +205,6 @@
 </script>
 
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -184,4 +220,8 @@
     </div>
   </div>
 </div>
+
+
+
+
 </html>

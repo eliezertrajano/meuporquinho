@@ -227,3 +227,42 @@ from lancamento l
 where l.ano_lancamento <> 0  
   and l.seq_usuario='".$_SESSION["seq_usuario"]."'
 order by l.ano_lancamento desc");
+
+
+///////// INCLLUSAO DE NOVOS REGISTROS ////////////////////////////////////////////////
+
+define("INCLUIR_CATEGORIAS", "INSERT INTO `categoria` (`nom_categoria`, `txt_categoria`, `ind_categoria`, `tip_grupo`, `seq_usuario`) VALUES
+                                                    ( 'Alimentacao', '', 'D', 'ALI', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Cartão de Crédito', '', 'D', 'MOV', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Celular/TV/Internet', 'Sugestão de gastos para esta categoria', 'D', 'PES', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Cinema/Passeio', '', 'D', 'LAZ', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Combustivel', '', 'D', 'TRA', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Dentista', 'Sugestão de gastos para esta categoria', 'D', 'SAU', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Educação/Cursos', 'Sugestão de gastos para esta categoria', 'D', 'PES', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Estacionamento', '', 'D', 'TRA', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Farmácia', '', 'D', 'SAU', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Lazer', '', 'D', 'LAZ', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Manutenção', '', 'D', 'TRA', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Poupança', '', 'I', 'INV', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Salário', '', 'R', 'ENT', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Tarifas Bancarias', '', 'D', 'TAX', '".$_SESSION["seq_usuario"]."'),
+                                                    ( 'Vestuário/Beleza', 'Sugestão de gastos para esta categoria', 'D', 'PES', '".$_SESSION["seq_usuario"]."');");
+
+define("INCLUIR_REGRAS","insert into regra (des_regra,seq_usuario,seq_categoria)
+          select * from (SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Alimentacao' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 117 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Cartão de Crédito' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 131 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Celular/TV/Internet' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 221 or `seq_categoria` = 212 or `seq_categoria` = 125  union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Cinema/Passeio' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 236 or `seq_categoria` =  243 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Combustivel' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 303 or `seq_categoria` = 207 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Dentista' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 215 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Educação/Cursos' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 128 or  `seq_categoria` = 305 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Estacionamento' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 306 or `seq_categoria` = 135 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Farmácia' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 244 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Lazer' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 243 or `seq_categoria` = 126 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Manutenção' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 149 or `seq_categoria` =  298 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Poupança' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 310 or `seq_categoria` = 249 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Salário' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 230 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Tarifas Bancarias' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 312 or `seq_categoria` = 120 union
+                         SELECT des_regra, '".$_SESSION["seq_usuario"]."' as seq_usuario, (select id from categoria where nom_categoria = 'Vestuário/Beleza' and seq_usuario = '".$_SESSION["seq_usuario"]."') as seq_categoria FROM `regra` WHERE `seq_categoria` = 124 or `seq_categoria` = 313) as tabela");
+
+define("INCLUIR_LANCAMENTO","INSERT INTO lancamento (`id`, `seq_usuario`, `mes_lancamento`, `ano_lancamento` ) VALUES ('".md5(date("l jS \of F Y h:i:s A").$_SESSION["seq_usuario"] )."', '".$_SESSION["seq_usuario"]."','12','2016')");

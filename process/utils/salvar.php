@@ -38,7 +38,7 @@ if($id<>""){
 		 }
 }else{
 	 $generico->insert($data,$tabela);
-   echo mysql_insert_id($generico->conexao->con);	
+     echo mysql_insert_id($generico->conexao->con);	
 }
 
 	 

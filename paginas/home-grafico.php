@@ -1,254 +1,318 @@
 <style>
-	.itens div {
-		padding-left: 0;
-		padding-right: 0;
-		text-align: center;
-	}
-	
-	.meses div {
-		border: 0 solid;
-		color: #000;
-		text-align: right;
-	}
-	
-	.master{
-		cursor:pointer; 
-		background-color: rgba(70, 103, 204, 0.06);    
-		padding-left: 11px;
-	
-	}
-	.master th{
-			font-weight: 400;
-	}
-	.destaque{
-		background-color:rgba(151, 158, 180, 0.39);
-		color:white;
-	}
-	.borda{
-	border: red 1px solid;
-box-shadow: 0px 0px 11px #333 !important;
--webkit-box-shadow: 5px 5px 14px #333;
--moz-box-shadow: 5px 5px 0 #333;
-height: 20px;
-width: 95px;
-position: absolute;
-right: 89px;
-border-radius: 11px;
-	}
+#hora span {
+  font-size: 30px;
+  display: block;
+  color: #5D6678;
+  text-align: center;
+}
+
+#hora {
+  padding-left: 23px;
+  padding-right: 23px;
+  border: solid 4px;
+  border-radius: 100px;
+  color: white;
+  height: 170px;
+  -webkit-box-shadow: 8px 11px 16px -9px #2F3E47;
+  -moz-box-shadow: 8px 11px 16px -9px #2F3E47;
+  box-shadow: 8px 11px 16px -9px #2F3E47;
+  text-align: center;
+}
+
+#hora label {
+  text-shadow: 2px 1px 2px #2F3E47 !important;
+}
+
+.alert {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1e767+0,feb645+100;Yellow+3D */
+  background: #f1e767;
+ /* Old browsers */
+  background: -moz-linear-gradient(left,  #f1e767 0%, #feb645 100%);
+ /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #f1e767 0%,#feb645 100%);
+ /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #f1e767 0%,#feb645 100%);
+ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645',GradientType=1 );
+ /* IE6-9 */;
+}
+
+.danger {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#feccb1+0,f17432+50,ea5507+51,fb955e+100;Red+Gloss+%232 */
+  background: #feccb1;
+ /* Old browsers */
+  background: -moz-linear-gradient(left,  #feccb1 0%, #f17432 50%, #ea5507 51%, #fb955e 100%);
+ /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%);
+ /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%);
+ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=1 );
+ /* IE6-9 */;
+}
+
+.success {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#606c88+0,3f4c6b+100;Grey+3D+%232 */
+  background: #606c88;
+ /* Old browsers */
+  background: -moz-linear-gradient(left,  #606c88 0%, #3f4c6b 100%);
+ /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  #606c88 0%,#3f4c6b 100%);
+ /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  #606c88 0%,#3f4c6b 100%);
+ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=1 );
+ /* IE6-9 */;
+}
+
+.resumo_txt{
+	border: solid 3px #f5f5f5;
+	background: white;
+	padding: 4px;
+}
+.resumo_valor{
+	float: right;
+}
+
+
 </style>
-<!-- row -->
-<!-- col -->
-<h1 class="page-title txt-color-blueDark">
-
-	<!-- PAGE HEADER -->
-	<i class="fa-fw fa fa-home"></i> 
-	Informações Gerais 
-	<select  class="col-sm-2" onchange="iniciar()" id="ano" name="ano" style="float:right">
-
-	</select>
-</h1>
-
-<!-- end row -->
-
-<!--
-	The ID "widget-grid" will start to initialize all widgets below 
-	You do not need to use widgets if you dont want to. Simply remove 
-	the <section></section> and you can use wells or panels instead 
--->
+<bR>
+<select  class="col-sm-2" onchange="iniciar()" id="ano" name="ano" style="float: left;position: absolute;right: 17px;width: 110px;"></select>
 
 
+<div id='hora' class="col-sm-2 alert">
+<label >Total de Entradas:</label><BR>
+<div style="color: green" id="qtd_entrada">R$ 0,00</div>
+<label >Minha hora: </label>
 
-<div class="table-responsive">
-	
-		<table class="table">
-				<thead>
-				<tr>
-						<th>Categorias</th>
-						<th>JAN</th>
-						<th>FEV</th>
-						<th>MAR</th>
-						<th>ABR</th>
-						<th>MAI</th>
-						<th>JUN</th>
-						<th>JUL</th>
-						<th>AGO</th>
-						<th>SET</th>
-						<th>OUT</th>
-						<th>NOV</th>
-						<th>DEZ</th>
+	<span id="qtd_hora">
+		<b>R$ 0,00</b>
+	</span>
 
-				</tr>
-				</thead>
-				<tbody class="meses">
-
-
-
-				</tbody>
-		</table>
-	<BR>
-	<h1 class="page-title txt-color-blueDark">
-
-	<!-- PAGE HEADER -->
-	<i class="fa-fw fa fa-home"></i> 
-	Resumo de seus gastos
-
-</h1>
-	<table class="table">
-				<thead>
-				<tr>
-						<th></th>
-						<th>JAN</th>
-						<th>FEV</th>
-						<th>MAR</th>
-						<th>ABR</th>
-						<th>MAI</th>
-						<th>JUN</th>
-						<th>JUL</th>
-						<th>AGO</th>
-						<th>SET</th>
-						<th>OUT</th>
-						<th>NOV</th>
-						<th>DEZ</th>
-
-				</tr>
-				</thead>
-				<tbody class="resumo">
-
-
-
-				</tbody>
-		</table>
 
 </div>
+<div id='hora' class="col-sm-2 col-md-offset-1 alert">
+<label >Investimento:</label><BR>
+<div style="color: green" id="qtd_Investimento">R$ 0,00</div>
+<label >Porcentagem: </label>
+
+	<span id="qtd_Investporcentagem">
+		<b>30%</b>
+	</span>
+
+
+</div>
+<div id='hora' class="col-sm-2 col-md-offset-1 alert">
+<label >Total de Saidas:</label><BR>
+<div style="color: red" id="qtd_saida">R$ 0,00</div>
+<label>Porcentagem: </label>
+
+	<span id="qtd_saidaporcentagem">
+		<b>0%</b>
+	</span>
+
+
+</div>
+<div id='hora' class="col-sm-2 col-md-offset-1 alert">
+<label >Maior Gasto:</label><BR>
+<div style="color: green" id="maior_gasto">Alimentação</div>
+<label>Porcentagem: </label>
+
+	<span id="qtd_maiorgasto">
+		<b>0%</b>
+	</span>
+
+
+</div>
+	<br>
+		<div class="col-sm-12" id="Resumo"></div>
+		<hr>
+
+		<div class="col-sm-12" id="teste" style="width: 100%;height: 300px;"></div>
+
+
 
 <script type="text/javascript">
+	 var d = new Date();
+	 var n = d.getMonth()+1; 
+
+	 
+	 $('table.highchart').highchartTable();
+ 	 $('table.highchartt').highchartTable();
+     $.getScript( "/assets/js/graficos.js", function( ) {
+	     $.getScript( "/assets/js/geral.js", function( ) {
+	     	 carregarSelect_custom('ano', 'LISTAR_ANOS_DISPONIVEIS');
+	         iniciar();	       
+		 });
+     });
+
+
+     function iniciar(){
+     	   
+
+     	    carregarValores({
+	            consulta: "RESUMO_GASTOS",
+	            parametro: $('#ano').val()
+	        },function(obj){
+	                  
+
+	            $.each(obj, function(index, value) {
+	            	 var i=0;
+	             	 var totalEntrada =0;
+					 var totalHoras =0;
+					 var totalInvestimento =0;
+					 var totalDespezas =0;
+	            	 
+
+                    ////////////////////////////////////////////////////////////////////////
+	            	 if(value["tip_classificacao"] == "Total de Receitas"){
+	            	
+		            	 $.each(value, function(index1, value1) {
+									
+										 
+		            	 	i++;
+		            	 	if((i!=1) ){
+											if(!isNaN(parseFloat(value1))){
+												totalEntrada=parseFloat(totalEntrada)+parseFloat(value1);
+											}
+		            	 		
+			                  }
+		            	 	
+		            	 });
+		            	 totalHoras = parseFloat(totalEntrada/(160*n)).toFixed(2);
+		            	 totalEntrada = totalEntrada.toFixed(2);
+									 
+		            	 $('#qtd_entrada').html(totalEntrada);
+		            	 $('#qtd_hora').html("R$ "+totalHoras);
+		            	
+	            	 }
+
+	            	 ///////////////////////////////////////////////////////////////////////
+	            	  if(value["tip_classificacao"] == "Total de Investimentos"){
+	            
+		            	 $.each(value, function(index1, value1) {
+		            	 	i++;
+		            	 	if((i!=1)){
+		            	 		totalInvestimento= format(value1)+format(totalInvestimento);
+			                  }
+		            	 	
+		            	 });
+		          
+		            	 $('#qtd_Investimento').html(totalInvestimento.toFixed(2));
+
+  	                     setTimeout(function(){$("#qtd_Investporcentagem").html(parseFloat(format($("#qtd_Investimento").html())/parseFloat($("#qtd_entrada").html())*100).toFixed(2)+"%")}, 1000);               
+	           
+	  			      }	
+	  			     ///////////////////////////////////////////////////////////////////////
+	            	  if(value["tip_classificacao"] == "Total de Despesas"){
+	            
+		            	 $.each(value, function(index1, value1) {
+		            	 	i++;
+		            	 	if((i!=1)&&(i<=n)){
+		            	 		totalDespezas=(parseFloat(totalDespezas)+parseFloat(value1));
+			                  }
+		            	 	
+		            	 });
+		            	 totalDespezas=totalDespezas*(-1);
+		            	 $('#qtd_saida').html(totalDespezas.toFixed(2));
+
+  	                     setTimeout(function(){$("#qtd_saidaporcentagem").html(parseFloat(format($("#qtd_saida").html())/format($("#qtd_entrada").html())*100).toFixed(2)+"%")}, 1000);               
+	           
+	  			      }	
+	            });
+	        });
+	        var valorMaior =0;
+	        var NomeCategoria='';
+	        var valor=0;
+	        var serie= [];
+
+	        carregarValores({
+	            consulta: "EXIBIR_GURPOSCATEGORIA",
+	            parametro: $('#ano').val()
+	        },function(obj){ 
+	        	
+	        	$.each(obj, function(index, value) {
+                    valor=0;
+                    valor = valor+ format(value["Janeiro"]);
+                    valor = valor+ format(value["Fevereiro"]);
+                    valor = valor+ format(value["Marco"]);
+                    valor = valor+ format(value["Abril"]);
+                    valor = valor+ format(value["Maio"]);
+                    valor = valor+ format(value["Junho"]);
+                    valor = valor+ format(value["Julho"]);
+                    valor = valor+ format(value["Agosto"]);
+                    valor = valor+ format(value["Setembro"]);
+                    valor = valor+ format(value["Outubro"]);
+                    valor = valor+ format(value["Novembro"]);
+                    valor = valor+ format(value["Dezembro"]);
+
+                    ////////////////verifica o maior valor entre as categorias/////////////////////
+
+                    if ((valor>valorMaior)&&(value["nom_grupo"]!='Receitas')){
+                    	valorMaior= valor;
+                    	NomeCategoria = value["nom_grupo"];
+                    } 
+
+                    ////////////////Adiciona o somatorio///////////////////// 
+
+                    $('#Resumo').append("<div class='col-sm-4 resumo_txt'>"+value["nom_grupo"]+"<span class='resumo_valor'> R$"+format(valor).toFixed(2)+"</span></div>");
+
+                    ////////////////cria o grafico////////////////////////////////////////////////
+
+                    if(value["nom_grupo"]!='Receitas'){
+                    	   serie.push({
+					     name: value["nom_grupo"],
+					     data: [format(value["Janeiro"]),
+					     	    format(value["Fevereiro"]), 
+					     	    format(value["Marco"]),
+					     	    format(value["Abril"]),
+					     	    format(value["Maio"]),
+					     	    format(value["Junho"]),
+					     	    format(value["Julho"]),
+					     	    format(value["Agosto"]),
+					     	    format(value["Setembro"]),
+					     	    format(value["Outubro"]),
+					     	    format(value["Novembro"]),
+					     	    format(value["Dezembro"])
+					     	    ]
+					     });
+                    }
+       
+                  
+                     
+	              
+	        	});
+
+				$("#maior_gasto").html(NomeCategoria);
+	       		$("#qtd_maiorgasto").html(parseFloat(parseFloat(valorMaior)/parseFloat($("#qtd_entrada").html())*100).toFixed(2)+"%");  
+
+
+				var categoria = ['JAN',	'FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+				gerarLinhas('#teste', categoria, 'Despesas durante o ano <br> <label style="font-size:15px">(Clique nas Categorias para compara-las)</label>', serie); 
+
+console.log(serie);
+
+	        }); 
+
+
+
+
+
+	       
+
+	 }
+
+	 function format(numero){
+	 	if (numero<0){
+	 		numero=numero*(-1);
+	 	}
+	 	if (numero==null){
+	 		numero=0;
+	 	}
 	
-
-	
-	$(function() {
-		$.getScript( "/assets/js/geral.js", function( ) {
-			carregarSelect_custom('ano', 'LISTAR_ANOS_DISPONIVEIS');
-			iniciar();
-		});
-	});
-
-	function iniciar() {
-		$("#label_status").html("<img src='/assets/images/default.svg' width='20px'>Aguarde... Atualizando registros!!");
-	
-
-	  carregarValores({
-			consulta: "EXIBIR_GURPOSCATEGORIA",
-			parametro: $('#ano').val()
-		}, function(obj) {
-			$('.meses').html("");
-			$.each(obj, function(index, value) {
-	        if(value.tip_grupo===null){
-						value.nom_grupo="Sem Categorizacao"
-					}
-					carregarValores({
-						consulta: "LISTAR_VALORES_ANO_DETALHES",
-						parametro: $('#ano').val()+","+value.tip_grupo
-					}, function(obj) {
-						if (value.tip_grupo=='SEM'){
-								$('.meses').append("<tr class='master' ><th><span class='zmdi zmdi zmdi-caret-right'></span>&nbsp;&nbsp;"+value.nom_grupo+"</th><th><a href='?q=detalhes&mes=01&ano="+$('#ano').val()+"'>"+tratarValores(value.Janeiro)+"</a></th><th><a href='?q=detalhes&mes=02&ano="+$('#ano').val()+"'>"+tratarValores(value.Fevereiro)+"</a></th><th><a href='?q=detalhes&mes=03&ano="+$('#ano').val()+"'>"+tratarValores(value.Marco)+"</a></th><th><a href='?q=detalhes&mes=04&ano="+$('#ano').val()+"'>"+tratarValores(value.Abril)+"</a></th><th><a href='?q=detalhes&mes=05&ano="+$('#ano').val()+"'>"+tratarValores(value.Maio)+"</a></th><th><a href='?q=detalhes&mes=06&ano="+$('#ano').val()+"'>"+tratarValores(value.Junho)+"</a></th><th><a href='?q=detalhes&mes=07&ano="+$('#ano').val()+"'>"+tratarValores(value.Julho)+"</a></th><th><a href='?q=detalhes&mes=08&ano="+$('#ano').val()+"'>"+tratarValores(value.Agosto)+"</a></th><th><a href='?q=detalhes&mes=09&ano="+$('#ano').val()+"'>"+tratarValores(value.Setembro)+"</a></th><th><a href='?q=detalhes&mes=10&ano="+$('#ano').val()+"'>"+tratarValores(value.Outubro)+"</a></th><th><a href='?q=detalhes&mes=11&ano="+$('#ano').val()+"'>"+tratarValores(value.Novembro)+"</a></th><th><a href='?q=detalhes&mes=12&ano="+$('#ano').val()+"'>"+tratarValores(value.Dezembro)+"</a></th></tr>");
-						}else{
-								$('.meses').append("<tr class='master_"+value.tip_grupo+" master'  onclick=\"toogle('"+value.tip_grupo+"')\" ><th ><span class='zmdi zmdi zmdi-caret-right'></span>&nbsp;&nbsp;"+value.nom_grupo+"</th><th>"+tratarValores(value.Janeiro)+"</th><th>"+tratarValores(value.Fevereiro)+"</th><th>"+tratarValores(value.Marco)+"</th><th>"+tratarValores(value.Abril)+"</th><th>"+tratarValores(value.Maio)+"</th><th>"+tratarValores(value.Junho)+"</th><th>"+tratarValores(value.Julho)+"</th><th>"+tratarValores(value.Agosto)+"</th><th>"+tratarValores(value.Setembro)+"</th><th>"+tratarValores(value.Outubro)+"</th><th>"+tratarValores(value.Novembro)+"</th><th>"+tratarValores(value.Dezembro)+"</th></tr>");
-						}
-						 mostrarValores(obj,value.tip_grupo);
-					});
-				
-				
-			});
-		});
-		
-		carregarValores({
-			consulta: "RESUMO_GASTOS",
-			parametro: $('#ano').val()
-		},function(obj){
-			console.log(obj);
-			$.each(obj, function(index, value) {
-				    var item = '';
-				    item = item + '<tr>';
-				    item = item + '<td>'+value.tip_classificacao+'</td><td>'+tratarValores(value.Janeiro)+'</td><td>'+tratarValores(value.Fevereiro)+'</td><td>'+tratarValores(value.Marco)+'</td><td>'+tratarValores(value.Abril)+'</td><td>'+tratarValores(value.Maio)+'</td><td>'+tratarValores(value.Junho)+'</td><td>'+tratarValores(value.Julho)+'</td><td>'+tratarValores(value.Agosto)+'</td><td>'+tratarValores(value.Setembro)+'</td><td>'+tratarValores(value.Outubro)+'</td><td>'+tratarValores(value.Novembro)+'</td><td>'+tratarValores(value.Dezembro)+'</td>';
-						item = item + '</tr>';
-				$('.resumo').append(item);	
-			});
-		});
-	
-	}
-	
-	function tratarValores(valor){
-		valor = Number(valor);
-		valor = valor.toFixed(2);
-		if(valor==null){
-			valor =0.00;
-		}
-		if(valor<0){
-			valor = valor*(-1);
-		}
-			return valor.toString().replace(".",",");
-	}
-	
-	function toogle(classe){
-		$("."+classe).toggle();
-		$(".master_"+classe+" .zmdi").toggleClass(' zmdi-caret-down');
-		$(".master_"+classe).toggleClass("destaque");
-		
-		
-		
-	}
-	function mostrarValores(obj,tipo){
-					$.each(obj, function(index, value) {
-				if (value.tipo == "1") {
-					color = "#B0C4DE";
-				} else {
-					color = 'white';
-				}
-				var item = '';
-				item = item + '<tr class="'+tipo+'" style="display:none;background:rgba(238, 232, 170, 0.64) none repeat scroll 0% 0%"><td><span> <a href="#" data-toggle="tooltip" data-placement="top" title="0" id="media_' + value.id + '">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + value.nom_categoria + '</a></span></td>';
-				item = item + '<td class=" valor mes1"><a href="?q=detalhes&mes=01&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["1"])+'</a></td>';	
-				item = item + '<td class=" valor mes2" ><a href="?q=detalhes&mes=02&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["2"])+'</a></td>';
-				item = item + '<td class=" valor mes3"><a href="?q=detalhes&mes=03&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["3"])+'</a></td>';	
-				item = item + '<td class="valor mes4"><a href="?q=detalhes&mes=04&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["4"])+'</a></td>';
-				item = item + '<td class=" valor mes5"><a href="?q=detalhes&mes=05&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["5"])+'</a></td>';	
-				item = item + '<td class=" valor mes6"><a href="?q=detalhes&mes=06&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["6"])+'</a></td>';
-				item = item + '<td class="valor mes7"><a href="?q=detalhes&mes=07&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["7"])+'</a></td>';	
-				item = item + '<td class="valor mes8"><a href="?q=detalhes&mes=08&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["8"])+'</a></td>';
-				item = item + '<td class="valor mes9"><a href="?q=detalhes&mes=09&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["9"])+'</a></td>';  	
-				item = item + '<td class=" valor mes10"><a href="?q=detalhes&mes=10&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["10"])+'</a></td>';
-				item = item + '<td class="valor mes11"><a href="?q=detalhes&mes=11&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["11"])+'</a></td>';	
-				item = item + '<td class= valor mes12" ><a href="?q=detalhes&mes=12&ano=' + $('#ano').val() + '&tipo=' + value.id + '" > '+retVal(value["12"])+'</a></td>';
-				item = item + '</tr>';
-				$('.meses').append(item);
-
-			});
+      return parseFloat(numero);
+	 }
+     
 
 
-			$("#label_status").html("Registros Atualizados!");
-			colorir();
-	}
-
-	function colorir(){
-		$.each(	$(".valor a"), function(index, value) {
-
-			var d = new Date();
-			var n = d.getMonth();
-			console.log(n);
-			for(i=1;i<(n+2);i++){
-				if(parseInt($(value).html())==0){
-					if($(value).parent().hasClass('mes'+i)){
-						$(value).parent().css('background','rgba(252, 201, 201, 0.33) none repeat scroll 0% 0%');
-					}
-				}
-			}
-		});
-	}
-	
-	function retVal(val){
-		if(val){
-			return val.replace('.',',');
-		}else{
-			return '0,00';
-		}
-	}
 </script>

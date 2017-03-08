@@ -17,18 +17,17 @@
         <title>Meu_Porquinho</title>
 
         <!--Morris Chart CSS -->
-		<link rel="stylesheet" href="assets/plugins/morris/morris.css">
 
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
-			  <link href="assets/css/fileupload.css" rel="stylesheet" type="text/css" />
-			  <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-			  <style>
+            <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+            <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+            <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+            <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+            <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+            <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+		    <link href="assets/css/fileupload.css" rel="stylesheet" type="text/css" />
+		    <link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+		  <style>
 					@media (max-width: 1024px) 
           {
 						.container {
@@ -72,6 +71,13 @@
         <script src="assets/js/jquery.nicescroll.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
 
+        
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.highchartTable-min.js"></script>
+        
+
+
+   
 
         <!-- Counter Up  -->
         <script src="assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
@@ -100,9 +106,9 @@
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
-			  <script src="assets/js/jquery.uploadfile.min.js"></script>
-			
-			
+		<script src="assets/js/jquery.uploadfile.min.js"></script>
+
+
 
 
     </head>
@@ -131,11 +137,16 @@
                         <div id="navigation">
                             <!-- Navigation Menu-->
                             <ul class="navigation-menu">
-       
                                 <li class="has-submenu">
                                     <a href="?q=home-grafico">
                                         <span><i class="zmdi zmdi-invert-colors"></i></span>
-                                        <span> Listagem</span> </a>
+                                        <span> Home</span> </a>
+                       
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="?q=home">
+                                        <span><i class="zmdi zmdi-invert-colors"></i></span>
+                                        <span> Detalhes</span> </a>
                        
                                 </li>
 															  <li class="has-submenu">
@@ -150,6 +161,7 @@
                                         <span> Categorias</span> </a>
                        
                                 </li>
+ 
 
                             </ul>
                             <!-- End navigation menu  -->
@@ -176,19 +188,26 @@
                         </ul>
 
                     </div>
-									<div id="label_status" class="navbar-left app-search pull-left hidden-xs" style="color: #C1C5C8;margin: 19px;">
+									<div id="label_status" class="navbar-left app-search pull-left hidden-xs" style="left: 257px;color: #4E738F;margin: 19px;position: absolute;top: 54px;background: #114e6b1a;padding: 10px;">
 										
 									</div>
 									            <div class="notification-box" style="float: right;">
                                     <ul class="list-inline m-b-0">
                                         <li>
-                                            <a href='javascript:$("[type=file]")[0].click();' class="right-bar-toggle">
+                                            <a data-toggle="tooltip" title="Ajuda" target="_blank" onclick="window.open(this.href,'galeria','width=680,height=470'); return false;" href='https://www.messenger.com/t/1196328903768124/' class="right-bar-toggle">
+                                            <i class="zmdi zmdi-pin-help"></i>
+                                          
+
+                                       </li>
+                       
+                                         <li>
+                                            <a data-toggle="tooltip" title="Importar Arquivos" href='javascript:$("[type=file]")[0].click();' class="right-bar-toggle">
                                                 <i class="zmdi zmdi-collection-text"></i>
                                             </a>
                               
                                         </li>
 																			                                     <li>
-                                            <a href='javascript:atualizarLancamentos()' class="right-bar-toggle">
+                                            <a data-toggle="tooltip" title="Atualizar Lançamentos"  href='javascript:atualizarLancamentos()' class="right-bar-toggle">
                                                 <i class="zmdi zmdi-fire"></i>
                                             </a>
                                             <div class="noti-dot">
@@ -197,11 +216,14 @@
                                             </div>
                                         </li>
 																				<li>
-                                            <a href='https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://gerenciador.meuporquinho.site/login.php' class="right-bar-toggle">
+                                            <a data-toggle="tooltip" title="Logout" href='https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=https://gerenciador.meuporquinho.site/login.php' class="right-bar-toggle">
                                                 <i class="zmdi zmdi-run"></i>
                                             </a>
                       
                                         </li>
+                                    </li>
+                                    <span><img style="width: 57px;border-radius: 50%;top: -5px;position: relative;left: 18px;" src="<?php echo $_SESSION["usuario"][0]["usuario"]["img_foto"];?>"/></span>
+                                    </li>
                                     </ul>
                                 </div>
 

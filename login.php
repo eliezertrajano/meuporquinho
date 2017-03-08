@@ -47,7 +47,7 @@
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1>Meu Porquinho</h1>
-                        <h3>A ferramenta para entender, organizar e prosperar com suas finanças pessoais</h3>
+                        <h3>Uma forma simples e fácil de organizar e prosperar com suas finanças pessoais</h3>
                         <hr class="intro-divider">
                         <center> <div class="wrapper-md">
                             <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -147,6 +147,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2>Entre para nossa comunidade</h2>
+									  <p>Nosso sucesso é o seu sucesso! Queremos oferecer serviços financeiros para gerar riqueza para você ou sua família, permitindo valorizarmos menos o dinheiro e mais o que verdadeiramente importa</p>
                 </div>
                 <div class="col-lg-6">
                     <ul class="list-inline banner-social-buttons">
@@ -173,9 +174,11 @@
                     <div class="clearfix"></div>
                         <h2 class="section-heading">Política de uso:</h2>
                             <p class="lead">
-                            1) Essa ferramenta é <b>gratuita</b>. Você doa uma parte do que lhe ajudarmos a economizar para continuarmos gratuitos e sem propaganda<br />
-                            2) Coletamos informações para oferecermos serviços melhores<br />
-                            3) Nosso sucesso é o seu sucesso! Queremos oferecer serviços financeiros para gerar riqueza para você ou sua família, permitindo valorizemos menos o dinheiro e mais o que verdadeiramente importa
+                            1) Essa ferramenta é <b>gratuita</b>. Mas se você quizer, pode pagar um café pra gente doando uma parte do que lhe ajudarmos a economizar para continuarmos gratuitos e sem propagandas;<br />
+                            2) Seus dados são seus e somente seus. Não compartilhamos qualquer tipo de informações suas. Caso deseje, a qualquer momento pode pedir a exclusão da conta e de todos os dados vinculados a ela;<br />
+                            3) A comunicação é criptografada, isso quer dizer seus dados trafegam em um caminho protegido;<br />
+                            3) Essa é uma solução que nos ajudou muito na organização de nossas finanças, esperamos que te ajude também. Tem novas ideias para o meu porquinho? ajude-nos a faze-lo melhor.
+                            <br />
                             </p>
                         <p class="copyright text-muted small">Copyright &copy; Meu Porquinho 2016. All. Todos os direitos reservados</p>
                 </div>
